@@ -32,15 +32,15 @@ width: auto;
   display: table-cell;
   margin-bottom: 15px;
   margin-left: 14px;
+  margin-top: 2.5% ;
 }
 .payment_options{
   box-sizing: border-box;
-  width: 22.333%;
-  margin:  80px;
+  width: 30.999%;
   padding: 2.5em;
   display: table-cell;
   margin-left:390px ;
-  margin-top: 10%;
+  margin-top: -1%;
   
 }
 
@@ -48,6 +48,9 @@ width: auto;
 margin: 156px;
 color: azure;
 
+}
+.list-group-item{
+  color: black;
 }
 
 
