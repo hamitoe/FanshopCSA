@@ -25,4 +25,31 @@ width: auto;
   width: 80px;
 }
 
+.return_infos{
+  box-sizing: border-box;
+  width: 33.333%;
+  margin:  0;
+  display: table-cell;
+  margin-bottom: 15px;
+  margin-left: 14px;
+}
+.payment_options{
+  box-sizing: border-box;
+  width: 22.333%;
+  margin:  80px;
+  padding: 2.5em;
+  display: table-cell;
+  margin-left:390px ;
+  margin-top: 10%;
+  
+}
+
+.footer_element{
+margin: 156px;
+color: azure;
+
+}
+
+
+
 
