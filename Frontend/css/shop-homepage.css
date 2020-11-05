@@ -60,7 +60,7 @@ width: auto;
 
 }
 .footer {
-  position: relative;
+  position: -webkit-sticky;
   left: 0;
   bottom: 0;
   width: 100%;
