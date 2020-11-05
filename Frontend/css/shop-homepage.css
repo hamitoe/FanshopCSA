@@ -3,7 +3,7 @@
  * Copyright 2013-2020 Start Bootstrap
  * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-shop-homepage/blob/master/LICENSE)
  */
-body {
+ body {
   padding-top: 100px;
 }
 
@@ -45,10 +45,11 @@ width: auto;
 }
 
 .footer_element{
-margin: 150px;
-color: azure;
-
-}
+  margin: 150px;
+  color: azure;
+  padding: 4px;
+  
+  }
 .list-group-item{
   color: black;
 }
@@ -58,7 +59,24 @@ color: azure;
   text-align: center;
 
 }
-
+.footer {
+  position: relative;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
+  height: 60px;
+}
+.footer2{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
+  height: 60px;
+}
 
 
 
