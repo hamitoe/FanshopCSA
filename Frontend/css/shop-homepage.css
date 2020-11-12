@@ -24,20 +24,19 @@ width: auto;
 
 .return_infos{
   box-sizing: border-box;
-  width: 33.333%;
   margin:  0;
   display: table-cell;
-  margin-bottom: 15px;
   margin-left: 14px;
-  margin-top: 2.5% ;
+  display: flex;
 }
 .payment_options{
   box-sizing: border-box;
-  width: 30.999%;
   padding: 2.5em;
   display: table-cell;
-  margin-left:390px ;
-  margin-top: -1%;
+  display: flex;
+  
+  
+  
   
 }
 
