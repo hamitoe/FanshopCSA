@@ -333,16 +333,8 @@ input.input100 {
   color: #fff;
   line-height: 1.2;
   text-transform: uppercase;
-
-  -webkit-transition: all 0.4s;
-  -o-transition: all 0.4s;
-  -moz-transition: all 0.4s;
-  transition: all 0.4s;
 }
 
-.login100-form-btn:hover {
-  background-color: #333333;
-}
 
 
 /*------------------------------------------------------------------
