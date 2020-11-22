@@ -16,6 +16,7 @@ INSERT INTO Kategorien (KatName)
 VALUES ("Kinder");
 
 
+
 -- Aktuelle Angebote --
 
 INSERT INTO Sortiment (KatID, MwStID, Bezeichnung, Beschreibung, preis, BildPfad)

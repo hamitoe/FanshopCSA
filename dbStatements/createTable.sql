@@ -15,6 +15,7 @@ MwSt real not Null
 
 --Tabelle Sortiment -- 
 
+
 CREATE table Sortiment (
 SortID Integer Primary key autoincrement, 
 KatID integer NOT NULL,
