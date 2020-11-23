@@ -14,23 +14,25 @@ INSERT INTO Kategorien (KatName)
 VALUES ("Männer");
 INSERT INTO Kategorien (KatName)
 VALUES ("Kinder");
+INSERT INTO Kategorien (KatName)
+VALUES ("Aktuelle Angebote");
 
 
 
 -- Aktuelle Angebote --
 
 INSERT INTO Sortiment (KatID, MwStID, Bezeichnung, Beschreibung, preis, BildPfad)
-VALUES (2,1,'T-Shirt', 'GALATASARAY ISTANBUL TRAININGSSHIRT SCHWARZ/ORANGE HERREN', 49.99,'https://www.outfitter.de/dw/image/v2/BBDZ_PRD/on/demandware.static/-/Sites-master-catalog-out/default/dw6727babb/images/210/210300/2566970.jpg?sw=550');
+VALUES (4,1,'T-Shirt', 'GALATASARAY ISTANBUL TRAININGSSHIRT SCHWARZ/ORANGE HERREN', 49.99,'https://www.outfitter.de/dw/image/v2/BBDZ_PRD/on/demandware.static/-/Sites-master-catalog-out/default/dw6727babb/images/210/210300/2566970.jpg?sw=550');
 INSERT INTO Sortiment (KatID, MwStID, Bezeichnung, Beschreibung, preis, BildPfad)
-VALUES (2,1,'T-Shirt', 'GALATASARAY ISTANBUL TRAININGSSHIRT ORANGE HERREN', 49.99,'https://www.outfitter.de/on/demandware.static/-/Sites-master-catalog-out/default/dw50ebef64/images/213/213354/2573190.jpg');
+VALUES (4,1,'T-Shirt', 'GALATASARAY ISTANBUL TRAININGSSHIRT ORANGE HERREN', 49.99,'https://www.outfitter.de/on/demandware.static/-/Sites-master-catalog-out/default/dw50ebef64/images/213/213354/2573190.jpg');
 INSERT INTO Sortiment (KatID, MwStID, Bezeichnung, Beschreibung, preis, BildPfad)
-VALUES (2,1,'T-Shirt', 'GALATASARAY ISTANBUL FUßBALLTRIKOT ORANGE/ROT HERREN', 39.99,'https://intersport-de.imgdn.net/fsi/server?type=image&source=marktplatz/produktiv/imgtb/3/42/1342.jpg&effects=Pad(cc,ffffff),Matte(FFFFFF)&width=600&height=600');
+VALUES (4,1,'T-Shirt', 'GALATASARAY ISTANBUL FUßBALLTRIKOT ORANGE/ROT HERREN', 39.99,'https://intersport-de.imgdn.net/fsi/server?type=image&source=marktplatz/produktiv/imgtb/3/42/1342.jpg&effects=Pad(cc,ffffff),Matte(FFFFFF)&width=600&height=600');
 INSERT INTO Sortiment (KatID, MwStID, Bezeichnung, Beschreibung, preis, BildPfad)
-VALUES (2,1,'Trainingsjacke', 'GALATASARAY ISTANBUL TRAININGSJACKE SCHWARZ HERREN', 64.99,'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,b_rgb:f5f5f5/i1-f8d1db05-fe1c-4ace-9cf3-9c54e098e55d/galatasaray-fussball-track-jacket-fur-herren-Chd598.jpg');
+VALUES (4,1,'Trainingsjacke', 'GALATASARAY ISTANBUL TRAININGSJACKE SCHWARZ HERREN', 64.99,'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,b_rgb:f5f5f5/i1-f8d1db05-fe1c-4ace-9cf3-9c54e098e55d/galatasaray-fussball-track-jacket-fur-herren-Chd598.jpg');
 INSERT INTO Sortiment (KatID, MwStID, Bezeichnung, Beschreibung, preis, BildPfad)
-VALUES (3,1,'Trikot-Set', 'GALATASARAY ISTANBUL TRAININGSTRIKOT-SET ORANGE/ROT KINDER', 49.99,'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,b_rgb:f5f5f5/33ba9eb8-8195-4147-8378-b5c716e886d3/galatasaray-2020-21-home-fussballtrikot-set-fur-babys-und-kleinkinder-Zx031d.jpg');
+VALUES (4,1,'Trikot-Set', 'GALATASARAY ISTANBUL TRAININGSTRIKOT-SET ORANGE/ROT KINDER', 49.99,'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,b_rgb:f5f5f5/33ba9eb8-8195-4147-8378-b5c716e886d3/galatasaray-2020-21-home-fussballtrikot-set-fur-babys-und-kleinkinder-Zx031d.jpg');
 INSERT INTO Sortiment (KatID, MwStID, Bezeichnung, Beschreibung, preis, BildPfad)
-VALUES (2,1,'Hose', 'GALATASARAY ISTANBUL TRAININGSHOSE SCHWARZ HERREN', 24.99,'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,b_rgb:f5f5f5/7951bc96-c4e8-4a16-9d7c-b401d653b80a/galatasaray-2020-21-stadium-home-away-fussballshorts-fur-altere-wBF0QD.jpg');
+VALUES (4,1,'Hose', 'GALATASARAY ISTANBUL TRAININGSHOSE SCHWARZ HERREN', 24.99,'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,b_rgb:f5f5f5/7951bc96-c4e8-4a16-9d7c-b401d653b80a/galatasaray-2020-21-stadium-home-away-fussballshorts-fur-altere-wBF0QD.jpg');
 
 -- Frauen --
 

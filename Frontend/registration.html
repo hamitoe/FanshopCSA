@@ -67,7 +67,7 @@
 
 <body>
 	<br>
-<center> <h1>Registrieren Sie sich um unseren Shop nutzen zu können!</h1></center>
+ <h2 style="text-align: center;">Registrieren Sie sich um unseren Shop nutzen zu können!</h2>
 
 	<div class="limiter">
 		<div class="container-login100">
@@ -79,7 +79,7 @@
 
 
 
-					<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+					<div class="wrap-input100 validate-input">
 						<input class="input100" type="text" name="vorname" placeholder="Vorname">
 						<span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
@@ -89,13 +89,13 @@
 
 
 
-					<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+					<div class="wrap-input100 validate-input" >
 						<input class="input100" type="text" name="nachname" placeholder="Nachname">
 						<span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
 					</div>
 
-					<br></br>
+					<br><br>
 
 
 					<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
@@ -118,9 +118,9 @@
 						<span class="focus-input100-2"></span>
 					</div>
 
-					<br></br>
+					<br><br>
 
-					<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+					<div class="wrap-input100 validate-input" >
 						<input class="input100" type="text" name="str" placeholder="Straße und Hausnummer">
 						<span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
@@ -128,7 +128,7 @@
 
 
 
-					<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+					<div class="wrap-input100 validate-input" >
 						<input class="input100" type="text" name="plz" placeholder="PLZ">
 						<span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
@@ -136,12 +136,22 @@
 
 
 
-					<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+					<div class="wrap-input100 validate-input" >
 						<input class="input100" type="text" name="ort" placeholder="Ort">
 						<span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
-					</div>
+						
 
+					</div>
+					<br><br>
+					<select name="register" class="wrap-input100 validate-input" required id="zahlungsart" style="padding: 4%;">
+						<option value="" disabled>Zahlungsart</option>
+						<option value="paypal">PayPal</option>
+						<option value="sofort">Sofort Überweisung</option>
+						<option value="visa">Visa</option>
+					  </select>
+					  
+					  <br>
 
 					<div class="container-login100-form-btn m-t-20 bg-danger">
 						<button class="login100-form-btn">
