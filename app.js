@@ -24,8 +24,9 @@ var path = require('path');
 
 // db.close();
 
-const publicDirectory = path.join(__dirname, './frontend/css');
-app.use(express.static(publicDirectory));
+
+
+app.use(express.static(__dirname + '/frontend'));
 
 app.get('/gsstore/agb', function(req, res) {
   res.sendFile(path.join(__dirname + '/frontend/agb.html'));
