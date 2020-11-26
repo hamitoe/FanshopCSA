@@ -89,6 +89,7 @@ INSERT INTO Zahlungsart (Bezeichnung)
 VALUES ("Sofort Überweisung");
 
 
-
+INSERT INTO Person (Vorname, Nachname, AdressID, Email, Passwort)
+VALUES('Max', 'Mustermann', 1, 'ashgouajsbdfo@asounas.de', '12354685');
 
 

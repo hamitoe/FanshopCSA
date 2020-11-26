@@ -39,25 +39,24 @@
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item ">
-						<a class="nav-link" href="index.html">HOME
+						<a class="nav-link active" href="/gsstore">HOME
 							<span class="sr-only"></span>
-						</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="shop.html">SHOP</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="kader.html">KADER</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="ueberuns.html">ÜBER UNS</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="warenkorb.html"><i class="fas fa-shopping-basket"
-								style="font-size: 20px;"></i></a>
-					</li>
-					<li class="nav-item active">
-						<a class="nav-link" href="login.html"><i class="fas fa-user" style="font-size: 20px;"></i></a>
+						  </a>
+						</li>
+						<li class="nav-item ">
+						  <a class="nav-link" href="/gsstore/shop">SHOP</a>
+						</li>
+						<li class="nav-item">
+						  <a class="nav-link" href="/gsstore/kader">KADER</a>
+						</li>
+						<li class="nav-item">
+						  <a class="nav-link" href="/gsstore/ueberuns">ÜBER UNS</a>
+						</li>
+						<li class="nav-item">
+						  <a class="nav-link" href="/gsstore/warenkorb"><i class="fas fa-shopping-basket" style="font-size: 20px;"></i></a>
+						</li>
+						<li class="nav-item">
+						  <a class="nav-link" href="/gsstore/login"><i class="fas fa-user" style="font-size: 20px;"></i></a>
 					</li>
 				</ul>
 			</div>
@@ -80,7 +79,7 @@
 
 
 					<div class="wrap-input100 validate-input">
-						<input class="input100" type="text" name="vorname" placeholder="Vorname">
+						<input class="input100" type="text" name="vorname" placeholder="Vorname" required id="vorname">
 						<span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
 					</div>
@@ -90,7 +89,7 @@
 
 
 					<div class="wrap-input100 validate-input" >
-						<input class="input100" type="text" name="nachname" placeholder="Nachname">
+						<input class="input100" type="text" name="nachname" placeholder="Nachname" required id="nachname">
 						<span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
 					</div>
@@ -98,21 +97,21 @@
 					<br><br>
 
 
-					<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+					<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz" required id="email">
 						<input class="input100" type="text" name="email" placeholder="E-Mail">
 						<span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
 					</div>
 					
 					
-					<div class="wrap-input100 rs1 validate-input" data-validate="Password is required">
+					<div class="wrap-input100 rs1 validate-input" data-validate="Password is required" required id="passwort">
 						<input class="input100" type="password" name="pass" placeholder="Passwort">
 						<span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
 					</div>
 					
 					
-					<div class="wrap-input100 rs1 validate-input" data-validate="Password is required">
+					<div class="wrap-input100 rs1 validate-input" data-validate="Password is required" required id="passerneut">
 						<input class="input100" type="password" name="passtest" placeholder="Passwort erneut eingeben">
 						<span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
@@ -121,7 +120,7 @@
 					<br><br>
 
 					<div class="wrap-input100 validate-input" >
-						<input class="input100" type="text" name="str" placeholder="Straße und Hausnummer">
+						<input class="input100" type="text" name="str" placeholder="Straße und Hausnummer" required id="strHN">
 						<span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
 					</div>
@@ -129,7 +128,7 @@
 
 
 					<div class="wrap-input100 validate-input" >
-						<input class="input100" type="text" name="plz" placeholder="PLZ">
+						<input class="input100" type="text" name="plz" placeholder="PLZ" required id="plz">
 						<span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
 					</div>
@@ -137,7 +136,7 @@
 
 
 					<div class="wrap-input100 validate-input" >
-						<input class="input100" type="text" name="ort" placeholder="Ort">
+						<input class="input100" type="text" name="ort" placeholder="Ort" required id="ort">
 						<span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
 						
@@ -167,9 +166,9 @@
 	<!-- Footer -->
 	<footer class="footer py-4 bg-danger">
 		<div class="container">
-			<a href="Kontakt.html" style="text-align: left;" class="footer_element"><b> Kontakt</b></a>
-			<a href="agb.html" style="text-align: center;" class="footer_element"> <b>AGB</b></a>
-			<a href="impressum.html" style="text-align: right;" class="footer_element"> <b>Impressum</b></a>
+			<a href="/gsstore/kontakt" style="text-align: left;"  class="footer_element"><b> Kontakt</b></a>
+			<a href="/gsstore/agb" style="text-align: center;" class="footer_element"> <b>AGB</b></a>
+			<a href="/gsstore/impressum" style="text-align: right;" class="footer_element"> <b>Impressum</b></a>
 		</div>
 
 
