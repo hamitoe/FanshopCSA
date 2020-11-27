@@ -22,7 +22,7 @@ getSortiment(){
 
 
 create(Vorname,Nachname ,AdressID,Email, Passwort) {
-    var sql = sql.run( "INSERT INTO Person (Vorname, Nachname, AdressID, Email, Passwort) VALUES ['Hamit','Oez',2,'asasdasa@asas.de','112341']");
+    var sql = ( "INSERT INTO Person (Vorname, Nachname, AdressID, Email, Passwort) VALUES (?,?,?,?,?)");
     var statement = this._conn.prepare(sql);
     var params = [Vorname, Nachname, AdressID, Email, Passwort];
     var result = statement.run(params);
