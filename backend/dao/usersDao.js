@@ -6,7 +6,16 @@ class usersDao{
     this.__conn = dbConnection;
 
 }
+loadById(id) {
+    var sql = "SELECT * FROM Person WHERE PersonID=?";
+    var statement = this.__conn.prepare(sql);
+    var result = statement.get(id);
 
+    if (helper.isUndefined(result)) 
+        throw new Error("No Record found by id=" + id);
+
+    return helper.objectKeysToLower(result);
+}
 getConnection(){
     return this.__conn;
 }
@@ -22,8 +31,8 @@ getSortiment(){
 
 
 create(Vorname,Nachname ,AdressID,Email, Passwort) {
-    var sql = ( "INSERT INTO Person (Vorname, Nachname, AdressID, Email, Passwort) VALUES (?,?,?,?,?)");
-    var statement = this._conn.prepare(sql);
+    var sql = "INSERT INTO Person (Vorname, Nachname, AdressID, Email, Passwort) VALUES (?,?,?,?,?)"
+    var statement = this.__conn.prepare(sql);
     var params = [Vorname, Nachname, AdressID, Email, Passwort];
     var result = statement.run(params);
 
@@ -36,16 +45,5 @@ create(Vorname,Nachname ,AdressID,Email, Passwort) {
 
 }
 
-// insert(vorname, nachname, email, pass, str, plz, ort, zahlungsart ){
-//     var sql = "INSTERT INTO Person (Vorname, Nachname, AdressID, Email, Passwort) VALUES (?,?,?,?,?)";
-//     var statement = this.__conn.prepare(sql);
 
-
-//     try {
-
-//         var sqlAdresse = "INSERT INTO Adresse()"
-
-//     }
-
-// }
  module.exports = usersDao;

@@ -1,5 +1,3 @@
-
-
 const helper = require("../helper.js");
 const express = require("express");
 var serviceRouter = express.Router()
@@ -40,9 +38,9 @@ serviceRouter.post("/insert", function (req, res) {
   }
 
 
-  const landDao = new usersDao(req.app.locals.dbConnection);
+  const createUser = new usersDao(req.app.locals.dbConnection);
   try {
-    var result = landDao.create(req.body.Vorname, req.body.Nachname, req.body.AdressID, req.body.Email, req.body.Passwort);
+    var result = createUser.create(req.body.Vorname, req.body.Nachname, req.body.AdressID, req.body.Email, req.body.Passwort);
     helper.log("Service Land: Record inserted");
     res.status(200).json(helper.jsonMsgOK(result));
   } catch (ex) {
