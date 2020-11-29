@@ -68,7 +68,7 @@ PersonID INTEGER Primary Key Autoincrement,
 Vorname Text NOT NULL,
 Nachname Text NOT NULL,
 AdressID INTEGER NOT NULL,
-Email Text NOT NULL,
+Email Text NOT NULL UNIQUE,
 Passwort Text NOT NULL,
 
 CONSTRAINT fk_AdressID FOREIGN KEY (AdressID) REFERENCES Adresse(AdressID)
