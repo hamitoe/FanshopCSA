@@ -72,9 +72,9 @@
 		<div class="container-login100">
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
 				<form class="login100-form validate-form">
-					<span class="login100-form-title p-b-33"; style="padding: 15px">
+					<span class="login100-form-title p-b-33"; style="padding: 15px"></span>
 						REGISTRIERUNG
-					</span>
+					
 
 
 
@@ -120,7 +120,13 @@
 					<br><br>
 
 					<div class="wrap-input100 validate-input" >
-						<input class="input100" type="text" name="str" placeholder="Straße und Hausnummer" required id="strHN">
+						<input class="input100" type="text" name="strasse" placeholder="Straße" required id="strasse">
+						<span class="focus-input100-1"></span>
+						<span class="focus-input100-2"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" >
+						<input class="input100" type="text" name="str" placeholder="Hausnummer" required id="hausnummer">
 						<span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
 					</div>
@@ -143,7 +149,7 @@
 
 					</div>
 					<br><br>
-					<select name="register" class="wrap-input100 validate-input" required id="zahlungsart" style="padding: 4%;">
+					<select name="zahlungsart" class="wrap-input100 validate-input" required id="zahlungsart" style="padding: 4%;">
 						<option value="" disabled>Zahlungsart</option>
 						<option value="paypal">PayPal</option>
 						<option value="sofort">Sofort Überweisung</option>
