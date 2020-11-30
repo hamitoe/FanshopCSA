@@ -56,20 +56,6 @@ exports.login = async (req, res) => {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 exports.register = (req, res) => {
     console.log(req.body);
 
