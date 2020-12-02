@@ -18,6 +18,8 @@ serviceRouter.get("/shop/aktuelleAngebote", function (req, res) {
     return res.status(400).end()
   }
 })
+
+
 serviceRouter.get("/shop/kinder", function (req, res) {
 
   var kinder = new productsDao(req.app.locals.dbConnection)
