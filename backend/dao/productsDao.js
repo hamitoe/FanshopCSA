@@ -8,14 +8,7 @@ class productsDao {
         return this._conn;
     }
 
-    getAllProducts(){
-        var sql = "SELECT *, S.Bezeichnung as BezeichnungSpeise, G.Bezeichnung as BezeichnungGericht from Gericht G, Speisenart S where G.SpeiseartID = S.SpeisenartID";
-        var statement= this._conn.prepare(sql);
-        var result = statement.all()
-        return result
-    }
-
-  
+ 
 
     getFrauen(){
         var sql = "SELECT * FROM SORTIMENT WHERE KatID = 1";
