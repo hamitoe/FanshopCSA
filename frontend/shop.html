@@ -13,6 +13,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <link rel="icon" href="pics/gsstorelogo.png">
   <script src="https://kit.fontawesome.com/2b10e96e92.js" crossorigin="anonymous"></script>
+  <script src="js/urlParameter.js"></script>
   
 
   <!-- Bootstrap core CSS -->
@@ -79,67 +80,56 @@
 
         <h1 class="my-4">Fanartikel</h1>
         <div class="list-group">
-          <a href="/gsstore/shop" class="list-group-item"><b>Aktuelle Angebote</b></a>
-          <a href="/gsstore/shop/frauen" class="list-group-item">Frauen</a>
-          <a href="/gsstore/shop/maenner" class="list-group-item">Männer</a>
-          <a href="/gsstore/shop/kinder" class="list-group-item">Kinder</a>
+         
+           <a href="shop.html?kategorie=aktuelleAngebote" class="list-group-item" id="sale">Aktuelle Angebote</a>
+           <a href="shop.html?kategorie=frauen" class="list-group-item" id="women">Frauen</a>
+          <a href="shop.html?kategorie=maenner" class="list-group-item" id="men">Männer</a>
+          <a href="shop.html?kategorie=kinder" class="list-group-item" id="child">Kinder</a>
           
         </div>
 
       </div>
       <!-- /.col-lg-3 -->
 
-      <div class="col-lg-9">
+      <div class="col-lg-9" id="carousell">
 
-        <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
-          <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-          
-          </ol>
-          <div class="carousel-inner" role="listbox"></div>
-            <div class="carousel-item active">
-              <img class="d-block img-fluid" src="https://www.whiskyzone.de/media/image/e7/de/a5/CatBannerAngebote.jpg" alt="First slide">
-            </div>
-          </div>
+       
          
-        </div>
+        </div> 
       </div>
 
 
         <div class="row" id="row2">
-
-                  
+       
         </div>
-        <!-- /.row -->
-
-      
-      <!-- /.col-lg-9 -->
-
-    </div>
-    <!-- /.row -->
-
   
-  <!-- /.container -->
-
-
-
+    </div>
+   
 
 
 
 
   <footer class="footer py-4 bg-danger">
     <div class="container">
-      <a href="/gsstore/kontakt" style="text-align: left;"  class="footer_element"><b> Kontakt</b></a>
-      <a href="/gsstore/agb" style="text-align: center;" class="footer_element"> <b>AGB</b></a>
-      <a href="/gsstore/impressum" style="text-align: right;" class="footer_element"> <b>Impressum</b></a>
+      <a href="kontakt.html" style="text-align: left;"  class="footer_element"><b> Kontakt</b></a>
+      <a href="agb.html" style="text-align: center;" class="footer_element"> <b>AGB</b></a>
+      <a href="impressum.html" style="text-align: right;" class="footer_element"> <b>Impressum</b></a>
     </div>
   </footer>
+  
   <script>
     $(document).ready(async function () {
+
+    var kategorie = "aktuelleAngebote";
+ if (existsUrlParameter("kategorie")) {
+    kategorie = getUrlParameterValue("kategorie");
+  }
+ 
+  console.log("kategor " + kategorie);
+
+
             
-             
-            
-                 ziel = "http://localhost:7000/shop";
+                 ziel = "http://localhost:7000/shop/" + kategorie;
              
                  const response = await fetch(ziel, {
                      method: 'GET'
@@ -147,11 +137,42 @@
                  if (response.status == 200 || response.status ==201) {
                      entries = await response.json()
                  renderProducts(entries)
+                 renderHead()
                  }
                  
  
          });
-  
+
+
+
+function renderHead() {
+  kategorie = getUrlParameterValue("kategorie");
+  var picturePath = "pics/"+kategorie+".png"
+  console.log("PP: "+picturePath);
+
+  document.getElementById("carousell").innerHTML =
+    
+      `
+      <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+          
+          </ol>
+          <div class="carousel-inner" role="listbox"></div>
+            <div class="carousel-item active">
+              <img class="d-block img-fluid" src="${picturePath}" alt="First slide">
+            </div>
+          </div>
+         
+        </div> 
+
+
+      `
+
+
+
+}
+
          function renderProducts(entries) {
      var i = entries.length
   
@@ -159,7 +180,8 @@
          ` 
      ${entries.map(function (entrie) {
              return `
-  
+      
+
              <div class="col-lg-4 col-md-6 mb-4" >
              <div class="card h-100">
                <a href="shop2.html"><img class="card-img-top" src=${entrie.BildPfad}
@@ -181,6 +203,11 @@
     
      `
  }
+
+
+ 
+
+
   
  </script>
 

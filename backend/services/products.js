@@ -52,6 +52,7 @@ serviceRouter.get("/shop/maenner", function (req, res) {
     return res.status(400).end()
   }
 })
+
 serviceRouter.get("/shop", function (req, res) {
 
   var alleArtikel = new productsDao(req.app.locals.dbConnection)
