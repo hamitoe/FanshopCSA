@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>GSSTORE-Resgistrierung</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" type="text/css" href="/css/util.css">
+	<link rel="stylesheet" type="text/css" href="/css/registration.css">
+	<!--===============================================================================================-->
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>GSSTORE-Shop</title>
+	<link rel="icon" href="/pics/gsstorelogo.png">
+	<script src="https://kit.fontawesome.com/2b10e96e92.js" crossorigin="anonymous"></script>
+
+	<!-- Bootstrap core CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+	<!-- Custom styles for this template -->
+	<link href="/css/shop-homepage.css" rel="stylesheet">
+</head>
+
+<head>
+	<!-- Navigation -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-danger fixed-top">
+		<div class="container">
+			<a class="navbar-brand" href="/gsstore"><img src="pics/gsstorelogo.png" size="auto"></a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+				aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item ">
+						<a class="nav-link active" href="/gsstore">HOME
+							<span class="sr-only"></span>
+						  </a>
+						</li>
+						<li class="nav-item ">
+						  <a class="nav-link" href="/gsstore/shop">SHOP</a>
+						</li>
+						<li class="nav-item">
+						  <a class="nav-link" href="/gsstore/kader">KADER</a>
+						</li>
+						<li class="nav-item">
+						  <a class="nav-link" href="/gsstore/ueberuns">ÜBER UNS</a>
+						</li>
+						<li class="nav-item">
+						  <a class="nav-link" href="/gsstore/warenkorb"><i class="fas fa-shopping-basket" style="font-size: 20px;"></i></a>
+						</li>
+						<li class="nav-item">
+						  <a class="nav-link" href="/gsstore/login"><i class="fas fa-user" style="font-size: 20px;"></i></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+</head>
+
+<body>
+	<br>
+ <h2 style="text-align: center;">Registrieren Sie sich um unseren Shop nutzen zu können!</h2>
+
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
+				<form action= "/auth/register" class="login100-form validate-form" method="POST">
+					<span class="login100-form-title p-b-33"; style="padding: 15px"></span>
+						<h2 style="text-align: center;"> Registrierung</h2>
+					<br><br>
+
+
+
+					<div class="wrap-input100 validate-input">
+						<label for="vorname"> Vorname: </label>
+						<input class="input100" type="text" name="vorname"  id="vorname" required >
+						<span class="focus-input100-1"></span>
+						<span class="focus-input100-2"></span>
+					</div>
+
+
+
+
+
+					<div class="wrap-input100 validate-input" >
+						<label for="nachname">Nachname: </label>
+						<input class="input100" type="text" name="nachname"  id="nachname" required>
+						<span class="focus-input100-1"></span>
+						<span class="focus-input100-2"></span>
+					</div>
+
+					<br><br>
+
+
+					<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz" required id="email">
+						<label for="email">Email: </label>
+						<input class="input100" type="text" name="email" id="email" required >
+						<span class="focus-input100-1"></span>
+						<span class="focus-input100-2"></span>
+					</div>
+					
+					
+					<div class="wrap-input100 rs1 validate-input" data-validate="Password is required" required id="passwort">
+						<label for="password">Passwort:</label>
+						<input class="input100" type="password" name="password" id="password">
+						<span class="focus-input100-1"></span>
+						<span class="focus-input100-2"></span>
+					</div>
+					
+					
+					<div class="wrap-input100 rs1 validate-input" data-validate="Password is required" required id="passerneut">
+						<label for="passwordConfirm">Passwort wiederholen: </label>
+						<input class="input100" type="password" name="passwordConfirm" id="passwordConfirm">
+						<span class="focus-input100-1"></span>
+						<span class="focus-input100-2"></span>
+					</div>
+
+				
+
+					<div class="wrap-input100 validate-input" >
+						<label for="street">Straße:</label>
+						<input class="input100" type="text" name="street" id="street"  required >
+						<span class="focus-input100-1"></span>
+						<span class="focus-input100-2"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" >
+						<label for="housnumber">Hausnummer: </label>
+						<input class="input100" type="text" name="housnumber" id="housnumber" required >
+						<span class="focus-input100-1"></span>
+						<span class="focus-input100-2"></span>
+					</div>
+
+
+
+					<div class="wrap-input100 validate-input" >
+						<label for="postcode">Postleitzahl: </label>
+						<input class="input100" type="text" name="postcode" id="postcode" required>
+						<span class="focus-input100-1"></span>
+						<span class="focus-input100-2"></span>
+					</div>
+
+
+
+					<div class="wrap-input100 validate-input" >
+						<label for="city">Ort: </label>
+						<input class="input100" type="text" name="city" id="city" required >
+						<span class="focus-input100-1"></span>
+						<span class="focus-input100-2"></span>
+						
+
+					</div>
+					<br><br>
+					
+					<select name="paymentOption" class="wrap-input100 validate-input" required id="paymentOption" name="paymentOption" style="padding: 4%;">
+						<option value="" disabled>Zahlungsart</option>
+						<option value="paypal">PayPal</option>
+						<option value="sofort">Sofort Überweisung</option>
+						<option value="visa">Visa</option>
+					  </select>
+					
+					  
+					  <br>
+
+					<div class="container-login100-form-btn m-t-20 bg-danger">
+						<button type="submit" class="login100-form-btn">
+							Registrieren
+						</button>
+					</div>
+					<div class="text-center"; style="padding: 5px">
+						<span class="txt1">
+							Du bist bereits registriert? 
+						</span>
+
+						<a href="/login" class="txt2 hov1">
+							Hier anmelden
+						</a>
+						
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<!-- Footer -->
+	<footer class="footer py-4 bg-danger">
+		<div class="container">
+			<a href="/gsstore/kontakt" style="text-align: left;"  class="footer_element"><b> Kontakt</b></a>
+			<a href="/gsstore/agb" style="text-align: center;" class="footer_element"> <b>AGB</b></a>
+			<a href="/gsstore/impressum" style="text-align: right;" class="footer_element"> <b>Impressum</b></a>
+		</div>
+
+
+	</footer>
+
+
+
+
+</body>
+
+</html>
