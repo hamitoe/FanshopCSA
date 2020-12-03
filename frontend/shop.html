@@ -118,12 +118,15 @@
   </footer>
   
   <script>
-    $(document).ready(async function () {
 
-    var kategorie = "aktuelleAngebote";
+  var kategorie = "aktuelleAngebote";
  if (existsUrlParameter("kategorie")) {
     kategorie = getUrlParameterValue("kategorie");
   }
+
+    $(document).ready(async function () {
+
+ 
  
   console.log("kategor " + kategorie);
 
@@ -146,8 +149,8 @@
 
 
 function renderHead() {
-  kategorie = getUrlParameterValue("kategorie");
-  var picturePath = "pics/"+kategorie+".png"
+ 
+  var picturePath = "pics/"+kategorie+".png";
   console.log("PP: "+picturePath);
 
   document.getElementById("carousell").innerHTML =
@@ -160,7 +163,7 @@ function renderHead() {
           </ol>
           <div class="carousel-inner" role="listbox"></div>
             <div class="carousel-item active">
-              <img class="d-block img-fluid" src="${picturePath}" alt="First slide">
+              <img class="d-block img-fluid" src=${picturePath} alt="First slide">
             </div>
           </div>
          
