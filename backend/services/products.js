@@ -2,9 +2,7 @@ const express = require("express");
 var serviceRouter = express.Router()
 const productsDao = require("../dao/productsDao.js");
 
-const jwt = require("jsonwebtoken");
-const { response } = require("express");
-const jwtKey = "my_secret_key"
+
 
 
 
