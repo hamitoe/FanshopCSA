@@ -26,6 +26,10 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
   <!-- Custom styles for this template -->
   <link href="css/shop-homepage.css" rel="stylesheet">
 
@@ -38,7 +42,8 @@
       window.parent.postMessage("resize", "*");
     }
   </script>
-
+<script src="js/urlParameter.js"></script>
+<script src="js/formatPrice.js"></script>
 
 
 </head>
@@ -91,28 +96,17 @@
     <div class="col-1-2">
       <div class="product-wrap">
         <h1>Artikelvorschau</h1>
-        <div class="product-shot">
+        <div class="product-shot" id="PP">
          
-          <img
-            src="https://www.outfitter.de/dw/image/v2/BBDZ_PRD/on/demandware.static/-/Sites-master-catalog-out/default/dw6727babb/images/210/210300/2566970.jpg?sw=550"
-            alt="" />
+        
         </div>
       </div>
     </div>
 
+
     <div class="col-1-2">
-      <div class="product-info">
-        <h2>Galatasaray Istanbul Trainingsshirt Schwarz/Herren</h2>
-        <div class="desc">
-          Unterstütze deinen Verein in der Saison 2020/2021 und zeige deinen Stolz mit diesem Galatasaray Istanbul
-          Trainingsshirt für Herren. Das funktionelle Nike Breathe-Material mit Dri-FIT-Technologie garantiert dir ein
-          stets
-          trockenes Tragegefühl. Das Vereinswappen auf der Brust bezeugt deine Teamzugehörigkeit zu Galatasaray,
-          egal ob auf dem Platz oder beim Jubeln von der Tribüne aus.
-        </div><br>
-        <div class="price_2">
-          <p>49,99€</p>
-        </div>
+      <div class="product-info" id="produktdetails">
+        
         <div id="myDIV">
           <button type="button" class="btn btn-outline-dark">S</button>
           <button type="button" class="btn btn-outline-dark">M</button>
@@ -133,22 +127,83 @@
     src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-157cd5b220a5c80d4ff8e0e70ac069bffd87a61252088146915e8726e5d9f147.js"></script>
 
 
+    <footer class="footer2 py-4 bg-danger">
+      <div class="container">
+        <a href="kontakt.html" style="text-align: left;"  class="footer_element"><b> Kontakt</b></a>
+        <a href="agb.html" style="text-align: center;" class="footer_element"> <b>AGB</b></a>
+        <a href="impressum.html" style="text-align: right;" class="footer_element"> <b>Impressum</b></a>
+      </div>
+    
+    
+    </footer>
+
+
+
+    <script>
+
+      productId = getUrlParameterValue("renderSelectedProductByID");
+      console.log("aktuelle id " + productId);
+      $(document).ready(async function() {
+
+        ziel = "http://localhost:7000/shop/gib/" + productId;
+             
+             const response = await fetch(ziel, {
+                 method: 'GET'
+             })
+             if (response.status == 200 || response.status ==201) {
+                 product = await response.json();
+                  console.log(product);
+                  renderSelectedProduct();                               
+                  renderProductPic();
+                 // BILD DYNAMISCH SETZEN
+             }
+
+             // FEHLERBEHANDLUNG FEHLT
+             
+
+      });
+
+      function renderSelectedProduct() {
+        
+  
+          var tmp = '';
+                 tmp += '<h2>' + product.Bezeichnung + '</h2>';
+                 tmp += '<div class="desc">' + product.Beschreibung + '</div><br>';
+                 tmp += '<div class="price_2"><p>' + toEuro(product.Preis) + '</p></div>';
+
+                 $('#produktdetails').prepend(tmp);
+
+       
+      }
+
+
+      function renderProductPic() {
+ 
+  
+ document.getElementById("PP").innerHTML =
    
+     `
+     <img id="produktbild" 
+            src="${product.BildPfad}"
+            alt="" />
+     `
 
 
+
+}
+
+    
+        
+      
+        
+      
+
+    </script>
 
 
 </body>
 
-<footer class="footer2 py-4 bg-danger">
-  <div class="container">
-    <a href="kontakt.html" style="text-align: left;"  class="footer_element"><b> Kontakt</b></a>
-    <a href="agb.html" style="text-align: center;" class="footer_element"> <b>AGB</b></a>
-    <a href="impressum.html" style="text-align: right;" class="footer_element"> <b>Impressum</b></a>
-  </div>
 
-
-</footer>
 
 
 </html>

@@ -4,7 +4,6 @@
   "main": "\u001b[D\u001b[D\u001b[D\u001b[Dindex.js)",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
-    
   },
   "repository": {
     "type": "git",
@@ -24,6 +23,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "hbs": "^4.1.1",
+    "helper": "0.0.13",
     "jsonwebtoken": "^8.5.1",
     "length": "0.0.1",
     "luxon": "^1.25.0",

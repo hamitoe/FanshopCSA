@@ -48,6 +48,15 @@ class productsDao {
 
     }
 
+   
+    loadById(id) {
+        var sql = "SELECT * FROM Sortiment WHERE SortID=?";
+        var statement = this._conn.prepare(sql);
+        var result = statement.get(id);
+        return result;
+      
+    }
+
 }
 
 module.exports = productsDao;
