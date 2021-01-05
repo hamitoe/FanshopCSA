@@ -1,12 +1,10 @@
 const express = require("express");
 var serviceRouter = express.Router();
-
 const productsDao = require("../dao/productsDao.js");
-
 const jwt = require("jsonwebtoken");
 const { response } = require("express");
 const jwtKey = "my_secret_key"
-
+const helper = require("../../helper.js");
 
 
 serviceRouter.get("/shop/aktuelleAngebote", function (req, res) {
@@ -81,50 +79,40 @@ serviceRouter.get("/shop/gib/:id", function (req, res) {
 
 });
 
-// serviceRouter.get("/produkt/gib/:sortID", function(req, res) {
-//   helper.log("Service Produkt: Client reqed one record, sortID=" + req.params.sortID);
+serviceRouter.post("/warenkorb", function(req, res) {
+  console.log("Service Warenkorb: Client reqed creation of new record");
 
-//   const produktDao = new productsDao(req.app.locals.dbConnection);
-//   try {
-//       var result = produktDao.loadById(req.params.sortID);
-//       helper.log("Service Produkt: Record loaded");
-//       res.status(200).json(helper.jsonMsgOK(result));
-//   } catch (ex) {
-//       helper.logError("Service Produkt: Error loading record by sortID. Exception occured: " + ex.message);
-//       res.status(400).json(helper.jsonMsgError(ex.message));
-//   }
-// });
+  var errorMsgs=[];
+  if (helper.isUndefined(req.body.SortID)) 
+      errorMsgs.push("SortID fehlt");
 
-// serviceRouter.get("/shop/gib/:id", function(req, res) {
-//   helper.log("Service Product: Client reqed one record, id=" + req.params.id);
+  if (helper.isUndefined(req.body.Beschreibung)) 
+    errorMsgs.push("Beschreibung fehlt");
 
-//   const produktDao = new productsDao(req.app.locals.dbConnection);
-//   try {
-//       var result = produktDao.loadById(req.params.id);
-//       helper.log("Service Product: Record loaded");
-//       res.status(200).json(helper.jsonMsgOK(result));
-//   } catch (ex) {
-//       helper.logError("Exception occured: " + ex.message);
-//       res.status(400).json(helper.jsonMsgError(ex.message));
-//   }
-// });
+  if (helper.isUndefined(req.body.Preis))
+    errorMsgs.push("Preis fehlt");
 
+  if (helper.isUndefined(req.body.BildPfad))
+    errorMsgs.push("BildPfad fehlt");
 
+  if (errorMsgs.length > 0) {
+      helper.log("Service Warenkorb: Creation not possible, data missing");
+      res.status(400).json(helper.jsonMsgError("Hinzufügen nicht möglich. Fehlende Daten: " + helper.concatArray(errorMsgs)));
+      return;
+  }
 
-// serviceRouter.get("/produkt/gib/sortID", function(req,res){
-
-//   var loadID = new productsDao(req.app.locals.dbConnection);
-//   try {
-//     var products = loadID.loadById(req.params.sortID);
-//     res.send(products).status(200)
-    
-//   } catch (error) {
-//     return res.status(400).end
-    
-//   }
+  const productsDaoo = new productsDao(req.app.locals.dbConnection);
+  try {
+      var result = productsDaoo.create(req.body.SortID, req.body.Beschreibung, req.body.Preis, req.body.BildPfad);
+      helper.log("Service Warenkorb: Record inserted");
+      res.status(200).json(helper.jsonMsgOK(result));
+  } catch (ex) {
+      helper.logError("Service Warenkorb: Error creating new record. Exception occured: " + ex.message);
+      res.status(400).json(helper.jsonMsgError(ex.message));
+  }    
+});
 
 
-// });
 
 
 

@@ -57,6 +57,14 @@ class productsDao {
       
     }
 
+    create(SortID = "", Beschreibung = "", Preis="", BildPfad="") {
+        var sql = "INSERT INTO Warenkorb (SortID,Beschreibung,Preis,BildPfad) VALUES (?,?,?,?)";
+        var statement = this._conn.prepare(sql);
+        var params = [SortID, Beschreibung, Preis, BildPfad];
+        var result = statement.run(params);
+        return result;
+    }
+
 }
 
 module.exports = productsDao;

@@ -44,6 +44,7 @@
   </script>
 <script src="js/urlParameter.js"></script>
 <script src="js/formatPrice.js"></script>
+<script src="js/sessionHandling.js"></script>
 
 
 </head>
@@ -105,19 +106,10 @@
 
 
     <div class="col-1-2">
-      <div class="product-info" id="produktdetails">
+      <div class="product-info" id="produktdetails">    
+          
+       
         
-        <div id="myDIV">
-          <button type="button" class="btn btn-outline-dark">S</button>
-          <button type="button" class="btn btn-outline-dark">M</button>
-          <button type="button" class="btn btn-outline-dark">L</button>
-        
-        </div>
-        <br>
-        <br>
-
-        <a href="warenkorb.html" class="btn btn-lg  btn-success  btn-danger">In den Warenkorb</a>
-        <a href="shop.html" class="btn btn-lg  btn-success  btn-light">Weiter einkaufen</a>
       </div>
 
     </div>
@@ -143,34 +135,45 @@
 
       productId = getUrlParameterValue("renderSelectedProductByID");
       console.log("aktuelle id " + productId);
+     
       $(document).ready(async function() {
 
         ziel = "http://localhost:7000/shop/gib/" + productId;
              
              const response = await fetch(ziel, {
                  method: 'GET'
-             })
-             if (response.status == 200 || response.status ==201) {
+             });
+             
+             try {
+              if (response.status == 200 || response.status ==201) {
                  product = await response.json();
                   console.log(product);
                   renderSelectedProduct();                               
                   renderProductPic();
-                 // BILD DYNAMISCH SETZEN
-             }
-
-             // FEHLERBEHANDLUNG FEHLT
-             
+             }                
+             } catch (error) {
+               console.log(error);
+               
+             }        
 
       });
+
+
+      function addToShoppingCart(params) {
+        
+      }
 
       function renderSelectedProduct() {
         
   
-          var tmp = '';
+                 var tmp = '';
                  tmp += '<h2>' + product.Bezeichnung + '</h2>';
                  tmp += '<div class="desc">' + product.Beschreibung + '</div><br>';
                  tmp += '<div class="price_2"><p>' + toEuro(product.Preis) + '</p></div>';
-
+                 tmp += '<br>'
+                 tmp += '<br>'
+                 tmp += '<a href="warenkorb.html?addToBasket='+product.SortID+'" class="btn btn-lg  btn-danger" id="addToCart">In den Warenkorb</a>'
+                 tmp += '<a href="shop.html" class="btn btn-lg btn-light">Weiter einkaufen</a>'
                  $('#produktdetails').prepend(tmp);
 
        
@@ -188,15 +191,8 @@
             alt="" />
      `
 
-
-
 }
 
-    
-        
-      
-        
-      
 
     </script>
 
