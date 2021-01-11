@@ -79,11 +79,11 @@ module.exports.jsonMsg = function(message = "OK", payload = null, error = false)
 }
 
 // return json object as error message
-module.exports.jsonMsgError = function(message = "Fehler") {
+module.exports.jsonMsgError = function(message = "Fehler", payload = null) {
     return {
         "nachricht": message, 
         "fehler": true,
-        "daten": null
+        "daten": payload
     };
 }
 

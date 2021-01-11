@@ -87,7 +87,6 @@ input.input100 {
   text-transform: uppercase;
 }
 
-
 @media (max-width: 992px) {
   .alert-validate::before {
     visibility: visible;

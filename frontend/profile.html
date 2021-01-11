@@ -14,6 +14,7 @@
     <link rel="icon" href="pics/gsstorelogo.png">
     <script src="https://kit.fontawesome.com/2b10e96e92.js" crossorigin="anonymous"></script>
     <script src="js/urlParameter.js"></script>
+    <script src="js/app.js" type="text/javascript" crossorigin="anonymous"></script>
 
 
     <!-- Bootstrap core CSS -->
@@ -59,8 +60,7 @@
                                     style="font-size: 20px;"></i></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="login.html"><i class="fas fa-user"
-                                    style="font-size: 20px;"></i></a>
+                        <a class="nav-link" onclick="app.navigation.forwardToLoginOrProfile()"><i class="fas fa-user" style="font-size: 20px;"></i></a>
                         </li>
                     </ul>
                 </div>
@@ -173,13 +173,37 @@
                                 </div>
                             </div>
                             <hr><hr>
-                            <h3 style="text-align: center;"><b>Hier können sie Ihre Daten aktualisieren. </b></h3>
+                            <h3 style="text-align: center;"><b>Hier können Sie Ihre Daten aktualisieren </b></h3>
                             <hr>
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <h6 class="mb-0"> <b>Email:</b></h6>
+                                    <h6 class="mb-0"><b>Vorname:</b></h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
+                                    <input type="text" class="form-control" id="vorname" placeholder="Max">
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <br>
+                                    <h6 class="mb-0"><b>Nachname:</b></h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <br>
+    
+                                    <input type="text" class="form-control" id="nachname"   placeholder="Mustermann">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <br>
+                                    <h6 class="mb-0"> <b>E-Mail:</b></h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <br>
                                     <input type="email" class="form-control" id="email" placeholder="Neue Email-Adresse eingeben.">
                                     <br>
                                     <button class="btn btn-light"><b>Speichern</b></button>
@@ -192,7 +216,7 @@
                                     <h6 class="mb-0"><b>Straße:</b></h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    <input type="email" class="form-control" id="str" placeholder="Straße">
+                                    <input type="text" class="form-control" id="strasse" placeholder="Straße">
                                     
                                 </div>
                             </div>
@@ -205,7 +229,7 @@
                                 <div class="col-sm-9 text-secondary">
                                     <br>
     
-                                    <input type="email" class="form-control" id="housenumber"   placeholder="Hausnummer">
+                                    <input type="text" class="form-control" id="hausnummer"   placeholder="Hausnummer">
                                 </div>
                             </div>
                             
@@ -217,7 +241,7 @@
                                 
                                 <div class="col-sm-9 text-secondary">
                                     <br>
-                                    <input type="email" class="form-control" id="postcode"   placeholder="PLZ">
+                                    <input type="text" class="form-control" id="plz"   placeholder="PLZ">
                                 </div>
                             </div>
                             
@@ -228,7 +252,7 @@
                                 </div>
                                 <div class="col-sm-9 text-secondary">
                                     <br>
-                                    <input type="email" class="form-control" id="city"   placeholder="Ort">
+                                    <input type="text" class="form-control" id="ort"   placeholder="Ort">
                                     <br>
                                     <button class="btn  btn-light"><b>Speichern</b></button>
 
@@ -275,8 +299,19 @@
             </div>
         </div>
     </div>
-
-
+    <script>
+        app.profile.loadProfile().then((profile) => {
+            $("#vorname").val(profile.vorname);
+			$("#nachname").val(profile.nachname);
+			$("#email").val(profile.email);
+			$("#strasse").val(profile.strasse);
+			$("#hausnummer").val(profile.hausnummer);
+			$("#plz").val(profile.plz);
+			$("#ort").val(profile.ort);
+        }).catch ((error) => {
+            window.location.href = 'login.html';
+        });
+    </script>
 </body>
 
 </html>

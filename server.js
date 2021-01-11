@@ -2,8 +2,11 @@
 // workaround / bugfix for linux systems
 Object.fromEntries = l => l.reduce((a, [k,v]) => ({...a, [k]: v}), {})
 /////////////////
-
+var cors = require('cors');
+require('dotenv').config();
+var cookieParser = require('cookie-parser');
 const helper = require("./helper.js");
+const auth = require("./Backend/services/auth");
 helper.log("Starting server...");
 
 try {
@@ -19,6 +22,15 @@ try {
     const HTTP_PORT = 7000;
     var express = require("express");
     var app = express();
+    app.use(cors())    
+    app.use(function(req, res, next) {  
+        res.header('Access-Control-Allow-Origin', req.headers.origin);
+        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        next();
+   });
+
+   app.use(express.static('./frontend'));
+   app.use(cookieParser());
 
     // provide service router with database connection / store the database connection in global server environment
     helper.log("Setup Web Server...");
@@ -53,6 +65,11 @@ try {
         helper.log("Server called without any specification");
         response.status(200).json(helper.jsonMsg("Server API arbeitet an Port " + HTTP_PORT));
     });
+
+    app.post("/login", auth.login);
+    app.post("/register", auth.register);
+    app.get("/profile", auth.getProfile);
+    app.put("/profile", auth.updateProfile);
 
     // bind services endpoints
     const TOPLEVELPATH = "/";
