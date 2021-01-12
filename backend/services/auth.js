@@ -180,3 +180,4 @@ exports.updateProfile = async (req, res) => {
     console.log('coooke from frontend: ' + req.cookies['jwt']);
     console.log('Update user profile data');
 }
+

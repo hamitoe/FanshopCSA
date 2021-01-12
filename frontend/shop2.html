@@ -156,12 +156,67 @@
                
              }        
 
-      });
 
 
-      function addToShoppingCart(params) {
-        
-      }
+        $('#addToCart').click(function() {
+          var productToAdd = product;
+          console.log("zum warenkorb hinzufügen, product=" + productToAdd.SortID);
+
+          // einen leeren warekorb anlegen
+          var basket = [];
+          // auf die session zugreifen und die warenkorbdaten holen, nur falls warenkorbdaten existieren
+          if(existsSessionItem('basket')) {
+            basket = getJSONSessionItem('basket');
+          }          
+
+          var productFound = false;
+
+          // schauen, ob produkt bereits in einer Bestellposition im Warenkorb
+            // mit einer forschleife den warenkorb ablaufen
+            // in jeder bestellposition schauen, ob da ein Produkt drin ist, wo die SortID mit unserem hinzuzufügenden übereinstimmt
+          // falls gefunden => Menge erhöhen
+          // falls nicht gefunden => Produkt als Bestellposition mit Menge 1 hinzufügen
+          for (i = 0; i < basket.length; i++) {
+            var orderPosition = basket[i];  // aktuelle bestellposition aus array holen
+            
+            // schauen ob produktid übereinstimmt
+            if (orderPosition.product.SortID == productToAdd.SortID) {  // falls ja
+              orderPosition.amount += 1;  // bei bestellposition die menge erhöhen
+              orderPosition.sum = orderPosition.amount * orderPosition.product.Preis; // und den summenpreis neu berechnen
+              basket[i] = orderPosition;  // die Bestellposition im array aktualisieren/überschreiben
+              productFound = true;  // sich merken, wir haben einen treffer gehabt
+              break;  // suche beenden, da treffer gefunden
+            }
+
+          } // ende for
+
+          // falls kein Treffer bei den Warenkorb-Daten, also nicht gefunden
+          if (productFound == false) {
+            // leere bestellposition anlegen
+            var orderPosition = {
+              product: null,
+              amount: 1,
+              sum: 0.0
+            };
+
+            orderPosition.product = productToAdd; // hinzuzufügendes produkt in Bestellposition reinlegen
+            orderPosition.sum = orderPosition.product.Preis * orderPosition.amount; // summenpreis berechnen
+            basket.push(orderPosition); // bestellposition an das warenkorb array anhängen/hinzufügen
+          }
+
+          // veränderten Warenkorb zurück speichern in die session
+          setJSONSessionItem('basket', basket);
+
+          // TODO
+          // user informieren dass das hinzuüfgen geklappt hat
+
+          console.log(basket);
+        });
+
+      }); // ende document ready
+
+
+      
 
       function renderSelectedProduct() {
         
@@ -172,7 +227,7 @@
                  tmp += '<div class="price_2"><p>' + toEuro(product.Preis) + '</p></div>';
                  tmp += '<br>'
                  tmp += '<br>'
-                 tmp += '<a href="warenkorb.html?addToBasket='+product.SortID+'" class="btn btn-lg  btn-danger" id="addToCart">In den Warenkorb</a>'
+                 tmp += '<a href="#" class="btn btn-lg  btn-danger" id="addToCart">In den Warenkorb</a>'
                  tmp += '<a href="shop.html" class="btn btn-lg btn-light">Weiter einkaufen</a>'
                  $('#produktdetails').prepend(tmp);
 

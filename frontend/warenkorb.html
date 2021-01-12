@@ -85,42 +85,14 @@
               <tr>
                 <th scope="col"> </th>
                 <th scope="col">Produkt</th>
-                <th scope="col">Größe</th>
-                <th scope="col" class="text-center">Anzahl</th>
                 <th scope="col" class="text-right">Preis</th>
+                <th scope="col" class="text-center">Menge</th>
+                <th scope="col" class="text-right">Summe</th>
                 <th> </th>
               </tr>
             </thead>
             <tbody id="renderShoppingCart">
               
-
-
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-
-                <td>Summe</td>
-                <td class="text-right">78,81€</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>16% MwSt</td>
-                <td class="text-right">15,02€</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-
-                <td><strong>Summe inkl. 16%MwSt</strong></td>
-                <td class="text-right"><strong>93,83€</strong></td>
-                <td></td>
-              </tr>
             </tbody>
           </table>
         </div>
@@ -199,57 +171,6 @@
       if(existsSessionItem('basket')){
         basket = getJSONSessionItem('basket');
       }
-
-      if(existsUrlParameter('addToBasket')){
-      
-        var productid = getUrlParameterValue('addToBasket');
-        console.log("ProduktID: " + productid)
-        ziel = "http://localhost:7000/shop/gib/" + productid;
-
-        const response = await fetch(ziel, {
-          method: 'GET'
-        });
-
-        try {
-          if (response.status == 200 || response.status == 201) {
-            loadedProduct = await response.json();
-            console.log(loadedProduct);
-            
-
-          }
-        } catch (error) {
-          console.log(error);
-
-
-      }
-    }
-
-    var idx = -1;
-    for (i = 0; i < basket.length; i++){
-      if (basket[i].productid == productid){
-        idx = i;
-        break;
-      }
-    }
-
-    if (idx == -1){
-        var orderPosition = {
-        product: loadedProduct,
-        amount: 1,
-        sum: 0.0
-        };
-      orderPosition.sum = orderPosition.product.preis * orderPosition.amount;
-
-      basket.push(orderPosition);
-
-    }else {
-      basket[idx].amount++;
-      basket[idx].sum = basket[idx].product.preis * basket[idx].amount;
-
-
-    }
-
-    setJSONSessionItem('basket', basket);
     
     showBasket();
 
@@ -262,7 +183,38 @@
         $('#renderShoppingCart').html("Der Warenkorb ist leer");
       }else {
         
-      
+        var totalSum = 0;
+
+        var tmp = '';
+        for (i = 0; i < basket.length; i++) {
+
+          var basketItem = basket[i];
+
+          tmp = '';
+          tmp += '<tr>';
+          tmp += '<td><img class="shopping-cart-pic-size" src="' + basketItem.product.BildPfad + '"  /> </td>';
+          tmp += '<td>' + basketItem.product.Beschreibung + '</td>';
+          tmp += '<td class="text-right">' + toEuro(basketItem.product.Preis) + '</td>';
+          tmp += '<td><input class="form-control" type="text" value="' + basketItem.amount + '" /></td>';
+          tmp += '<td class="text-right">' + toEuro(basketItem.sum) + '</td>';
+          tmp += '<td class="text-right"><button class="btn btn-sm btn-danger" onClick="removeItemFromBasket(' + basketItem.product.SortID + ')"><i class="fa fa-trash"></i> </button> </td>';
+          tmp += '</tr>';
+
+          $('#renderShoppingCart').append(tmp);
+
+          totalSum += basketItem.sum;
+
+        }
+
+        var totalTax = (totalSum / 119) * 19;
+        // TODO steuer runden
+
+        tmp = '<tr><td colspan="3"></td><td>enth. MwSt</td><td class="text-right">' + toEuro(totalTax) + '</td><td></td></tr>';
+        $('#renderShoppingCart').append(tmp);
+
+        tmp = '<tr><td colspan="3"></td><td>Bestellwert</td><td class="text-right">' + toEuro(totalSum) + '</td><td></td></tr>';
+        $('#renderShoppingCart').append(tmp);
+      /*
      document.getElementById("renderShoppingCart").innerHTML =
          ` 
      ${basket.map(function (basketItem) {
@@ -273,9 +225,9 @@
              <tr>
              <td><img class="shopping-cart-pic-size" src="${basketItem.product.BildPfad}"  /> </td>
              <td>${basketItem.product.Beschreibung}</td>
-             <td>M</td>
-             <td><input class="form-control" type="text" value="1" /></td>
              <td class="text-right">${toEuro(basketItem.product.Preis)}</td>
+             <td><input class="form-control" type="text" value="${basketItem.amount}" /></td>
+             <td class="text-right">${toEuro(basketItem.sum)}</td>
              <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
              </tr>
   
@@ -283,15 +235,20 @@
          `
          }).join("")}
     
-     `
+     `*/
       }
 
     }
 
 
-    function removeItemFromBasket() {
-      
+    function removeItemFromBasket(idToBeRemoved) {
+      console.log("bestellposition entfernen, produkt id=" + idToBeRemoved);
 
+      // TODO
+      // suchen nach der bestellposition, welche das produkt enthält, welche die id hat
+      // gefundene bestellposition löschen (nicht pop, sondern splice)
+      // warenkorb in session aktualisieren
+      // warenkorbseite aktualisieren
       
     }
     
