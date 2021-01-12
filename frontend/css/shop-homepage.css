@@ -123,3 +123,14 @@ button {
   line-height: 1.2;
   text-transform: uppercase;
 }
+
+#message-panel {
+  position: fixed;
+  top: 68px; 
+  width: 100%;
+  z-index: 1000;
+}
+
+.alert {
+  display: none;
+}

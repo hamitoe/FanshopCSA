@@ -7,6 +7,7 @@ require('dotenv').config();
 var cookieParser = require('cookie-parser');
 const helper = require("./helper.js");
 const auth = require("./Backend/services/auth");
+const profile = require("./Backend/services/profile");
 helper.log("Starting server...");
 
 try {
@@ -68,15 +69,17 @@ try {
 
     app.post("/login", auth.login);
     app.post("/register", auth.register);
-    app.get("/profile", auth.getProfile);
-    app.put("/profile", auth.updateProfile);
+    app.get("/profile", profile.getProfile);
+    app.get("/profile/payments", profile.getPaymentOptions);
+    app.put("/profile/user", profile.updateUserData);
+    app.put("/profile/user/password", profile.updatePassword);
+    app.put("/profile/user/address", profile.updateUserAddress);
+    app.put("/profile/user/payment", profile.updatePaymentOption);
 
     // bind services endpoints
     const TOPLEVELPATH = "/";
     
     var serviceRouter = require("./backend/services/products.js");
-    
-    
     app.use(TOPLEVELPATH, serviceRouter);
     
 
