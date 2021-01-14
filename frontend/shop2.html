@@ -227,7 +227,7 @@
                  tmp += '<div class="price_2"><p>' + toEuro(product.Preis) + '</p></div>';
                  tmp += '<br>'
                  tmp += '<br>'
-                 tmp += '<a href="#" class="btn btn-lg  btn-danger" id="addToCart">In den Warenkorb</a>'
+                 tmp += '<a href="#" class="btn btn-lg  btn-danger" id="addToCart" onClick="myFunction1()">In den Warenkorb</a>'
                  tmp += '<a href="shop.html" class="btn btn-lg btn-light">Weiter einkaufen</a>'
                  $('#produktdetails').prepend(tmp);
 
@@ -245,6 +245,11 @@
             src="${product.BildPfad}"
             alt="" />
      `
+
+}
+
+function myFunction1() {
+  alert("Artikel wurde erfolgreich hinzugefügt");
 
 }
 

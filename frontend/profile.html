@@ -29,6 +29,7 @@
 
 </head>
 
+<body>
     <header>
         <!-- Navigation -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-danger fixed-top">
@@ -65,15 +66,16 @@
                 </div>
             </div>
         </nav>
-
-
+        <div id="message-panel"  class="alert alert-dismissible fade show" role="alert">
+            <span id="message-label"></span>
+          </div>
     </header>
-<body>
+    
 
 
     <h1 class="text-center  mt-4 mb-0">Profilübersicht</h1>
 
-
+<br>
 
     <div class="container">
         <div class="main-body">
@@ -81,12 +83,14 @@
 
             <div class="row gutters-sm">
                 
-                <div class="col">
-                    <div class="card">
+                <div class="col-md">
+                    <div class="card mb">
                         <div class="card-body">
-                            
-                            
-                            <h3 style="text-align: center;"><b>Hier können Sie Ihre Daten aktualisieren</b></h3>
+                            <div class="row">
+                                
+                            </div>
+                            <hr><hr>
+                            <h3 style="text-align: center;"><b>Hier können Sie Ihre Daten aktualisieren </b></h3>
                             <hr>
                             <div class="row">
                                 <div class="col-sm-3">
@@ -117,9 +121,9 @@
                                 </div>
                                 <div class="col-sm-9 text-secondary">
                                     <br>
-                                    <input type="email" class="form-control" id="email" placeholder="Neue E-Mail-Adresse eingeben">
+                                    <input type="email" class="form-control" id="email" placeholder="Neue Email-Adresse eingeben.">
                                     <br>
-                                    <button class="button bg-danger"><b>Speichern</b></button>
+                                    <button id="updateUserDataButton" class="button btn-danger" onclick="app.profile.updateUserData();"><b>Speichern</b></button>
                                 </div>
                             </div>
                             <hr>
@@ -167,8 +171,7 @@
                                     <br>
                                     <input type="text" class="form-control" id="ort"   placeholder="Ort">
                                     <br>
-                                    <button class="button bg-danger"><b>Speichern</b></button>
-
+                                    <button id="updateUserAdressButton" class="button btn-danger" onclick="app.profile.updateUserAddress();"><b>Speichern</b></button>
                                 </div>
                                
                                
@@ -180,14 +183,10 @@
                                     <h6 class="mb-0" style="padding-top: 9px;"><b>Zahlungsmethode:</b></h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    <select class="form-control" id="exampleFormControlSelect1">
-                                        <option>Paypal</option>
-                                        <option>Visa</option>
-                                        <option>Sofort Überweisung</option>
-                                        
+                                    <select class="form-control" id="paymentOptionList">
                                       </select>
                                       <br>
-                                      <button class="button bg-danger"><b>Speichern</b></button>
+                                      <button id="updatePaymentButton" class="button btn-danger" onclick="app.profile.updatePaymentOption();"><b>Speichern</b></button>
                                     
                                 </div>
                             </div>
@@ -197,12 +196,11 @@
                                     <h6 class="mb-0" style="padding-top: 9px;"><b>Passwort: </b></h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    <input type="email" class="form-control" id="password"   placeholder="Neues Passwort eingeben">
+                                    <input type="password" class="form-control" id="password"   placeholder="Neues Passwort eingeben">
                                     <br>
-                                    <input type="email" class="form-control" id="confirmPassword"   placeholder="Neues Passwort bestätigen">
+                                    <input type="password" class="form-control" id="confirmPassword"   placeholder="Neues Passwort bestätigen">
                                       <br>
-                                      <button class="button bg-danger"><b>Speichern</b></button>
-                                    
+                                      <button id="updatePasswordButton" class="button btn-danger" onclick="app.profile.updatePassword();"><b>Speichern</b></button>
                                 </div>
                             </div>
 
@@ -222,17 +220,8 @@
       </footer>
 
     <script>
-        app.profile.loadProfile().then((profile) => {
-            $("#vorname").val(profile.vorname);
-			$("#nachname").val(profile.nachname);
-			$("#email").val(profile.email);
-			$("#strasse").val(profile.strasse);
-			$("#hausnummer").val(profile.hausnummer);
-			$("#plz").val(profile.plz);
-			$("#ort").val(profile.ort);
-        }).catch ((error) => {
-            window.location.href = 'login.html';
-        });
+        app.profile.initPage();
     </script>
 </body>
+
 </html>
