@@ -207,13 +207,15 @@
         }
 
         var totalTax = (totalSum / 119) * 19;
-        // TODO steuer runden
+       
+        // STEUER RUNDEN
+        totalTax = totalTax.toFixed(2);
 
         tmp = '<tr><td colspan="3"></td><td>enth. MwSt</td><td class="text-right">' + toEuro(totalTax) + '</td><td></td></tr>';
         $('#renderShoppingCart').append(tmp);
 
         tmp = '<tr><td colspan="3"></td><td>Bestellwert</td><td class="text-right">' + toEuro(totalSum) + '</td><td></td></tr>';
-        $('#renderShoppingCart').append(tmp);
+        $('#renderShoppingCart').append(tmp);  
       /*
      document.getElementById("renderShoppingCart").innerHTML =
          ` 
