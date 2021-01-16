@@ -11,17 +11,21 @@
   <title>GSSTORE-Shop</title>
   <link rel="icon" href="pics/gsstorelogo.png">
   <script src="https://kit.fontawesome.com/2b10e96e92.js" crossorigin="anonymous"></script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-
   <!-- Custom styles for this template -->
   <link href="css/shop-homepage.css" rel="stylesheet">
 
+  <!-- security check -->
 
-
+  <script src="js/sessionHandling.js"></script>
+  <script src="js/urlParameter.js"></script>
+  <script src="js/formatPrice.js"></script>
+  <script src="https://unpkg.com/easyinvoice/dist/easyinvoice.min.js"></script>
+  
 </head>
 
 <header>
@@ -37,23 +41,24 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item ">
-            <a class="nav-link active" href="index.html">HOME
+            <a class="nav-link " href="index.html">HOME
               <span class="sr-only"></span>
             </a>
-            </li>
-            <li class="nav-item ">
+          </li>
+          <li class="nav-item ">
             <a class="nav-link" href="shop.html">SHOP</a>
-            </li>
-            <li class="nav-item">
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="kader.html">KADER</a>
-            </li>
-            <li class="nav-item">
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="ueberuns.html">ÜBER UNS</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="warenkorb.html"><i class="fas fa-shopping-basket" style="font-size: 20px;"></i></a>
-            </li>
-            <li class="nav-item">
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="warenkorb.html"><i class="fas fa-shopping-basket"
+                style="font-size: 20px;"></i></a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="login.html"><i class="fas fa-user" style="font-size: 20px;"></i></a>
           </li>
         </ul>
@@ -68,8 +73,8 @@
 
 
   <div class="container">
-    <h1 class="jumbotron-heading" style="text-align: center;">Bestellbestätigung <br> <br> Vielen Dank für Ihre
-      Bestellung! <br></h1> <br>
+    <h1 class="jumbotron-heading" style="text-align: center;">Bestellbestätigung</h1>
+    <h1 class="jumbotron-heading" style="text-align: center;">Vielen dank für Ihre Bestellung! </h1>
   </div>
 
 
@@ -82,68 +87,19 @@
               <tr>
                 <th scope="col"> </th>
                 <th scope="col">Produkt</th>
-                <th scope="col">Größe</th>
-                <th scope="col" class="text-center">Anzahl</th>
                 <th scope="col" class="text-right">Preis</th>
+                <th scope="col" class="text-center">Menge</th>
+                <th scope="col" class="text-right">Summe</th>
                 <th> </th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td><img class="shopping-cart-pic-size"
-                    src="https://img01.ztat.net/article/spp-media-p1/f629cb6add0a3dc9baf2735f19346f76/fbfc9b04268d41e6bf7ad4e6cb40b56b.jpg?imwidth=303&filter=packshot" />
-                </td>
-                <td>Trikot - Männer(Saison 20/21)</td>
-                <td>&nbsp;&nbsp;&nbsp;M</td>
-                <td>
-                  <p style="text-align: center;">1</p>
-                </td>
-                <td class="text-right">59,99€</td>
-                <td> </td>
-              </tr>
-              <tr>
-                <td><img class="shopping-cart-pic-size"
-                    src="https://cdn.gsstore.org/UPLOAD/PRODUCT/thumb/C201141-50-1.jpg" /> </td>
-                <td>Kinder T-Shirt</td>
-                <td>&nbsp;&nbsp;&nbsp;XS</td>
-                <td>
-                  <p style="text-align: center;">1</p>
-                </td>
-                <td class="text-right">33,90€</td>
-                <td> </td>
-              </tr>
+            <tbody id="renderShoppingCart">
 
-              <tr>
-
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>Summe</td>
-                <td class="text-right">78,81€</td>
-                <td></td>
-              </tr>
-              <tr>
-
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>16% MwSt</td>
-                <td class="text-right">15,02€</td>
-                <td></td>
-              </tr>
-              <tr>
-
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><strong>Summe inkl. 16%MwSt</strong></td>
-                <td class="text-right"><strong>93,83€</strong></td>
-                <td></td>
-              </tr>
             </tbody>
           </table>
         </div>
       </div>
+      <br>
       <div class="return_infos">
         <div class="card border-dark mb-3" style="max-width: 18rem;">
           <div class="card-header"><b>Informationen zu Retoure</b></div>
@@ -159,12 +115,11 @@
       </div>
       <div class="payment_options">
         <div class="card border-dark mb-3" style="max-width: 18rem;">
-          <div class="card-header"><b>Gewählte Bezahloption</b></div>
+          <div class="card-header"><b>Gewählte Bezahloption:</b></div>
           <div class="card-body text-dark">
-            <p class="card-text">
-
-              
-              <label for="other"><b>Sofort Überweisung</b></label></p>
+           <p name="paymentoption" value="sofortueb" checked>
+              <label for="other"><b>Sofort Überweisung</b></label>
+            </p>
           </div>
         </div>
 
@@ -178,28 +133,188 @@
       <div class="col mb-2">
         <div class="row">
           <div class="col-sm-12  col-md-6">
-            <a href="shop.html"><button class="btn btn-lg btn-block btn-success text-uppercase btn-light"><b>WEITER
-                  EINKAUFEN</b></button></a>
+           
           </div>
-          <div class="col-sm-12  col-md-6">
-            <a href="javascript:self.print()"><button
-                class="btn btn-lg btn-block btn-success text-uppercase btn-light"><b><i
-                    class="fas fa-print"></i></b></button></a>
+          <div class="col-sm-12 col-md-6 ">
+            <a href="javascript:self.print()"><button 
+                class="btn btn-lg btn-block btn-success text-uppercase btn-danger"><b>Beestätigung ausdrucken</b></button></a>
+
           </div>
+
         </div>
+        <br>
+        <br>
+        <form class="was-validated">
+          <div class="custom-control custom-checkbox mb-3">
+            <input type="checkbox" class="custom-control-input" id="customControlValidation1" checked>
+            <label class="custom-control-label" for="customControlValidation1">Es gelten unsere <a
+                href="agb.html">Allgemeinen Geschäftsbedingungen</a>.</label>
+            <div class="invalid-feedback">Bitte bestätigen Sie die AGB !</div>
+          </div>
+        </form>
+
       </div>
+
     </div>
+
   </div>
+  <script>
+
+    var basket = [];
+
+    $('document').ready(async function () {
+
+      if (existsSessionItem('basket')) {
+        basket = getJSONSessionItem('basket');
+      }
+
+      showBasket();
+
+    });
+
+    function showBasket() {
+      console.log(basket);
+
+      if (basket.length == 0) {
+        $('#renderShoppingCart').html("Der Warenkorb ist leer");
+      } else {
+
+        var totalSum = 0;
+
+        var tmp = '';
+        for (i = 0; i < basket.length; i++) {
+
+          var basketItem = basket[i];
+
+          tmp = '';
+          tmp += '<tr>';
+          tmp += '<td><img class="shopping-cart-pic-size" src="' + basketItem.product.BildPfad + '"  /> </td>';
+          tmp += '<td>' + basketItem.product.Beschreibung + '</td>';
+          tmp += '<td class="text-right">' + toEuro(basketItem.product.Preis) + '</td>';
+          tmp += '<td><p style="text-align: center;">'+basketItem.amount +'</p>';
+          tmp += '<td class="text-right">' + toEuro(basketItem.sum) + '</td>';
+          tmp += '<td  </td>';
+          tmp += '</tr>';
+
+          $('#renderShoppingCart').append(tmp);
+
+          totalSum += basketItem.sum;
+
+        }
+
+        var totalTax = (totalSum / 119) * 19;
+        // TODO steuer runden
+
+        tmp = '<tr><td colspan="3"></td><td>enth. MwSt</td><td class="text-right">' + toEuro(totalTax) + '</td><td></td></tr>';
+        $('#renderShoppingCart').append(tmp);
+
+        tmp = '<tr><td colspan="3"></td><td>Bestellwert</td><td class="text-right">' + toEuro(totalSum) + '</td><td></td></tr>';
+        $('#renderShoppingCart').append(tmp);
+        /*
+       document.getElementById("renderShoppingCart").innerHTML =
+           ` 
+       ${basket.map(function (basketItem) {
+         console.log(basketItem);
+               return `
+        
+  
+               <tr>
+               <td><img class="shopping-cart-pic-size" src="${basketItem.product.BildPfad}"  /> </td>
+               <td>${basketItem.product.Beschreibung}</td>
+               <td class="text-right">${toEuro(basketItem.product.Preis)}</td>
+               <td><input class="form-control" type="text" value="${basketItem.amount}" /></td>
+               <td class="text-right">${toEuro(basketItem.sum)}</td>
+               <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
+               </tr>
+    
+              
+           `
+           }).join("")}
+      
+       `*/
+      }
+
+    }
+
+
+    function removeItemFromBasket(idToBeRemoved) {
+      console.log("bestellposition entfernen, produkt id=" + idToBeRemoved);
+
+
+
+
+
+      idToRemove = idToBeRemoved;
+
+      index = basket.map(function (item) {
+        return item.product.SortID
+        console.log("Das ist item.SortID " + item.product.SortID)
+
+
+      }).indexOf(idToRemove);
+
+      basket.splice(index, 1);
+
+      setJSONSessionItem('basket', basket);
+      // veränderten Warenkorb zurück speichern in die session
+      window.location.reload();
+
+    }
+    // var items = JSON.parse(localStorage.getItem('basket'));
+		// var index = items.findIndex(x => x.sortID == idToBeRemoved);
+
+		// if (index == -1){
+		// 	items.splice(index, 1)
+		// 	localStorage.setItem('basket', JSON.stringify(items));
+    // }
+
+    // if (basket.length == 1 )
+
+
+    //       setJSONSessionItem('basket', items); 
+
+
+    //       window.location.reload();
+    //   }
+
+
+
+      // TODO      
+      // suchen nach der bestellposition, welche das produkt enthält, welche die id hat (erledigt)
+      // gefundene bestellposition löschen (nicht pop, sondern splice)
+      // warenkorb in session aktualisieren
+
+
+
+      // warenkorbseite aktualisieren
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </script>
+
+
+
+  <footer class="footer py-4 bg-danger">
+    <div class="container">
+      <a href="kontakt.html" style="text-align: left;" class="footer_element"><b> Kontakt</b></a>
+      <a href="agb.html" style="text-align: center;" class="footer_element"> <b>AGB</b></a>
+      <a href="impressum.html" style="text-align: right;" class="footer_element"> <b>Impressum</b></a>
+    </div>
+
+
+  </footer>
+
 </body>
 
-<footer class="footer py-4 bg-danger">
-  <div class="container">
-    <a href="kontakt.html" style="text-align: left;"  class="footer_element"><b> Kontakt</b></a>
-    <a href="agb.html" style="text-align: center;" class="footer_element"> <b>AGB</b></a>
-    <a href="impressum.html" style="text-align: right;" class="footer_element"> <b>Impressum</b></a>
-  </div>
-
-
-</footer>
 
 </html>

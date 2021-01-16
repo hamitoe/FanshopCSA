@@ -20,11 +20,12 @@
   <link href="css/shop-homepage.css" rel="stylesheet">
 
   <!-- security check -->
-  
+
   <script src="js/sessionHandling.js"></script>
   <script src="js/urlParameter.js"></script>
   <script src="js/formatPrice.js"></script>
-
+  <script src="https://unpkg.com/easyinvoice/dist/easyinvoice.min.js"></script>
+  
 </head>
 
 <header>
@@ -92,7 +93,7 @@
               </tr>
             </thead>
             <tbody id="renderShoppingCart">
-              
+
             </tbody>
           </table>
         </div>
@@ -115,11 +116,11 @@
         <div class="card border-dark mb-3" style="max-width: 18rem;">
           <div class="card-header"><b>Bitte Bezahloption wählen</b></div>
           <div class="card-body text-dark">
-            <p class="card-text"> <input type="radio" id="male" name="paymentoption" value="paypal">
+            <p class="card-text"> <input type="radio" id="male" name="paymentoption" value="Paypal">
               <label for="male"><i class="fab fa-cc-visa" style="font-size: 50px;"></i></label><br>
-              <input type="radio" id="female" name="paymentoption" value="visa">
+              <input type="radio" id="female" name="paymentoption" value="Visa">
               <label for="female"><i class="fab fa-paypal" style="font-size: 50px;"></i></label><br>
-              <input type="radio" id="other" name="paymentoption" value="sofortueb" checked>
+              <input type="radio" id="other" name="paymentoption" value="Sofort Überweisung" checked>
               <label for="other"><b>Sofort Überweisung</b></label>
             </p>
           </div>
@@ -139,11 +140,10 @@
                   EINKAUFEN</b></button></a>
           </div>
           <div class="col-sm-12 col-md-6 text-right">
-            <a href="Bestellbestätigung.html"><button
-                class="btn btn-lg btn-block btn-success text-uppercase btn-danger"><b>Jetzt bezahlen</b></button></a>
+            <button 
+                class="btn btn-lg btn-block btn-success text-uppercase btn-danger" onclick="verifyChecked()"><b>Jetzt bezahlen</b></button></a>
 
           </div>
-
 
         </div>
         <br>
@@ -163,26 +163,26 @@
 
   </div>
   <script>
-    
+
     var basket = [];
 
-    $('document').ready(async function(){
+    $('document').ready(async function () {
 
-      if(existsSessionItem('basket')){
+      if (existsSessionItem('basket')) {
         basket = getJSONSessionItem('basket');
       }
-    
-    showBasket();
+
+      showBasket();
 
     });
 
-    function showBasket(){
+    function showBasket() {
       console.log(basket);
 
-      if (basket.length == 0){
+      if (basket.length == 0) {
         $('#renderShoppingCart').html("Der Warenkorb ist leer");
-      }else {
-        
+      } else {
+
         var totalSum = 0;
 
         var tmp = '';
@@ -214,28 +214,28 @@
 
         tmp = '<tr><td colspan="3"></td><td>Bestellwert</td><td class="text-right">' + toEuro(totalSum) + '</td><td></td></tr>';
         $('#renderShoppingCart').append(tmp);
-      /*
-     document.getElementById("renderShoppingCart").innerHTML =
-         ` 
-     ${basket.map(function (basketItem) {
-       console.log(basketItem);
-             return `
-      
-
-             <tr>
-             <td><img class="shopping-cart-pic-size" src="${basketItem.product.BildPfad}"  /> </td>
-             <td>${basketItem.product.Beschreibung}</td>
-             <td class="text-right">${toEuro(basketItem.product.Preis)}</td>
-             <td><input class="form-control" type="text" value="${basketItem.amount}" /></td>
-             <td class="text-right">${toEuro(basketItem.sum)}</td>
-             <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
-             </tr>
+        /*
+       document.getElementById("renderShoppingCart").innerHTML =
+           ` 
+       ${basket.map(function (basketItem) {
+         console.log(basketItem);
+               return `
+        
   
-            
-         `
-         }).join("")}
+               <tr>
+               <td><img class="shopping-cart-pic-size" src="${basketItem.product.BildPfad}"  /> </td>
+               <td>${basketItem.product.Beschreibung}</td>
+               <td class="text-right">${toEuro(basketItem.product.Preis)}</td>
+               <td><input class="form-control" type="text" value="${basketItem.amount}" /></td>
+               <td class="text-right">${toEuro(basketItem.sum)}</td>
+               <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
+               </tr>
     
-     `*/
+              
+           `
+           }).join("")}
+      
+       `*/
       }
 
     }
@@ -244,16 +244,73 @@
     function removeItemFromBasket(idToBeRemoved) {
       console.log("bestellposition entfernen, produkt id=" + idToBeRemoved);
 
-      // TODO
-      // suchen nach der bestellposition, welche das produkt enthält, welche die id hat
+
+
+
+
+      idToRemove = idToBeRemoved;
+
+      index = basket.map(function (item) {
+        return item.product.SortID
+        console.log("Das ist item.SortID " + item.product.SortID)
+
+
+      }).indexOf(idToRemove);
+
+      basket.splice(index, 1);
+
+      setJSONSessionItem('basket', basket);
+      // veränderten Warenkorb zurück speichern in die session
+      window.location.reload();
+
+    }
+    // var items = JSON.parse(localStorage.getItem('basket'));
+		// var index = items.findIndex(x => x.sortID == idToBeRemoved);
+
+		// if (index == -1){
+		// 	items.splice(index, 1)
+		// 	localStorage.setItem('basket', JSON.stringify(items));
+    // }
+
+    // if (basket.length == 1 )
+
+
+    //       setJSONSessionItem('basket', items); 
+
+
+    //       window.location.reload();
+    //   }
+
+
+
+      // TODO      
+      // suchen nach der bestellposition, welche das produkt enthält, welche die id hat (erledigt)
       // gefundene bestellposition löschen (nicht pop, sondern splice)
       // warenkorb in session aktualisieren
-      // warenkorbseite aktualisieren
-      
-    }
-    
 
-    
+
+
+      // warenkorbseite aktualisieren
+
+
+      function verifyChecked() {
+        if(document.getElementById('customControlValidation1').checked) {
+    window.location.replace("Bestellbestätigung.html") 
+
+        }else{
+          window.alert("Bitte AGB bestätigen! ")
+        }
+      }
+
+
+
+
+
+
+
+
+
+
 
   </script>
 

@@ -2,6 +2,7 @@
 // workaround / bugfix for linux systems
 Object.fromEntries = l => l.reduce((a, [k,v]) => ({...a, [k]: v}), {})
 /////////////////
+var fs = require('fs')
 var cors = require('cors');
 require('dotenv').config();
 var cookieParser = require('cookie-parser');
@@ -87,3 +88,7 @@ try {
 } catch (ex) {
     helper.logError(ex);
 }
+
+
+
+ 
