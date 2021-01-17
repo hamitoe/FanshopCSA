@@ -245,17 +245,12 @@
       console.log("bestellposition entfernen, produkt id=" + idToBeRemoved);
 
 
-
-
-
-      idToRemove = idToBeRemoved;
-
       index = basket.map(function (item) {
         return item.product.SortID
         console.log("Das ist item.SortID " + item.product.SortID)
 
 
-      }).indexOf(idToRemove);
+      }).indexOf(idToBeRemoved);
 
       basket.splice(index, 1);
 
@@ -263,24 +258,8 @@
       // veränderten Warenkorb zurück speichern in die session
       window.location.reload();
 
+
     }
-    // var items = JSON.parse(localStorage.getItem('basket'));
-		// var index = items.findIndex(x => x.sortID == idToBeRemoved);
-
-		// if (index == -1){
-		// 	items.splice(index, 1)
-		// 	localStorage.setItem('basket', JSON.stringify(items));
-    // }
-
-    // if (basket.length == 1 )
-
-
-    //       setJSONSessionItem('basket', items); 
-
-
-    //       window.location.reload();
-    //   }
-
 
 
       // TODO      
