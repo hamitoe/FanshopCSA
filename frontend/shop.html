@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>GSSTORE-Shop</title>
+  <link rel="icon" href="pics/gsstorelogo.png">
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <!-- Fontawesome JavaScript -->  
+  <script src="https://kit.fontawesome.com/2b10e96e92.js" crossorigin="anonymous"></script>
+  <!-- Eigenes JavaScript -->  
+  <script src="js/urlParameter.js"></script>
+  <script src="js/formatPrice.js"></script>
+  <script src="js/shoppingcart.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <!-- Eigenes CSS -->
+  <link href="css/shop-homepage.css" rel="stylesheet">
+
+</head>
+
+<body>
+<header>
+ <!-- Navigation -->
+ <nav class="navbar navbar-expand-lg navbar-dark bg-danger fixed-top" >
+  <div class="container">
+    <a class="navbar-brand" href="index.html"><img src="pics/gsstorelogo.png" alt="Galatasaray Logo" ></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item ">
+          <a class="nav-link " href="index.html">HOME
+					  <span class="sr-only"></span>
+					</a>
+				  </li>
+				  <li class="nav-item ">
+					<a class="nav-link active" href="shop.html">SHOP</a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" href="kader.html">KADER</a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" href="ueberuns.html">ÜBER UNS</a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" href="warenkorb.html"><i class="fas fa-shopping-basket" style="font-size: 20px;"></i></a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" href="login.html"><i class="fas fa-user" style="font-size: 20px;"></i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+</header>
+
+
+
+
+ 
+  
+
+  <!-- Page Content -->
+  <div class="container">
+
+    <div class="row">
+
+      <div class="col-lg-3">
+
+        <h1 class="my-4">Fanartikel</h1>
+        <div class="list-group">
+         
+           <a href="shop.html?kategorie=aktuelleAngebote" class="list-group-item" id="sale">Aktuelle Angebote</a>
+           <a href="shop.html?kategorie=frauen" class="list-group-item" id="women">Frauen</a>
+          <a href="shop.html?kategorie=maenner" class="list-group-item" id="men">Männer</a>
+          <a href="shop.html?kategorie=kinder" class="list-group-item" id="child">Kinder</a>
+          
+        </div>
+
+      </div>
+      <!-- /.col-lg-3 -->
+
+      <div class="col-lg-9" id="carousell">
+
+       
+         
+        </div> 
+      </div>
+
+
+        <div class="row" id="produktliste">
+       
+        </div>
+  
+    </div>
+   
+
+
+
+
+  <footer class="footer py-4 bg-danger">
+    <div class="container">
+      <a href="kontakt.html" style="text-align: left;"  class="footer_element"><b> Kontakt</b></a>
+      <a href="agb.html" style="text-align: center;" class="footer_element"> <b>AGB</b></a>
+      <a href="impressum.html" style="text-align: right;" class="footer_element"> <b>Impressum</b></a>
+    </div>
+  </footer>
+  
+  <script>
+
+  var kategorie = "aktuelleAngebote";
+ if (existsUrlParameter("kategorie")) {
+    kategorie = getUrlParameterValue("kategorie");
+  }
+
+    $(document).ready(async function () {
+
+ 
+ 
+  console.log("kategor " + kategorie);
+
+
+            
+                 ziel = "http://localhost:7000/shop/" + kategorie;
+             
+                 const response = await fetch(ziel, {
+                     method: 'GET'
+                 })
+                 if (response.status == 200 || response.status ==201) {
+                     entries = await response.json();
+                      renderProducts(entries);
+                      renderHead();
+                 }
+                 
+                // FEHLERBEHANDLUNG FEHLT
+         });
+
+
+
+function renderHead() {
+ 
+  var picturePath = "pics/"+kategorie+".png";
+  console.log("PP: "+picturePath);
+
+  
+  document.getElementById("carousell").innerHTML =
+    
+      `
+      <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+          </ol>
+          <div class="carousel-inner" role="listbox"></div>
+            <div class="carousel-item active">
+              <img class="d-block img-fluid" src="${picturePath}" alt="First slide">
+            </div>
+          </div>
+        </div> 
+      `
+
+
+
+}
+
+         function renderProducts(entries) {
+     
+
+          $(entries).each(function(idx, entrie) {
+          
+            var tmp = '';
+            tmp += '<div class="col-lg-4 col-md-6 mb-4">';
+            tmp += '<div class="card h-100">';
+            tmp += '<a href="shop2.html?renderSelectedProductByID=' + entrie.SortID + '"><img class="card-img-top" src="' + entrie.BildPfad + '" alt=""></a>';
+            tmp += '<div class="card-body">';
+            tmp += '<h4 class="card-title">';
+            tmp += '<a href="shop2.html?renderSelectedProductByID=' + entrie.SortID + '">' + entrie.Bezeichnung + '</a>';
+            tmp += '</h4>';
+            tmp += '<h5>' + toEuro(entrie.Preis) + '</h5>';
+            tmp += '<p class="card-text">' + entrie.Beschreibung + '</p>';
+            tmp += '<a href="shop2.html?renderSelectedProductByID=' + entrie.SortID + '" class="btn btn-lg btn-danger">Weitere Details</a>';
+            tmp += '</div>';
+            tmp += '</div>';
+            tmp += '</div>';
+ 
+            $('#produktliste').append(tmp);
+         });
+    
+ }
+
+
+ 
+
+
+  
+ </script>
+
+</body>
+
+
+
+</html>

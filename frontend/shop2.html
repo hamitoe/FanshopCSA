@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" type="image/png"
+    href="https://static.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" />
+  <meta name="apple-mobile-web-app-title" content="CodePen">
+  <link rel="shortcut icon" type="image/x-icon"
+    href="https://static.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
+  <link rel="mask-icon" type="image/x-icon"
+    href="https://static.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg"
+    color="#111" />
+  <link rel="stylesheet" href="css/shop2.css">
+
+  <title>Shop-Vorschau</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <link rel="icon" href="pics/gsstorelogo.png">
+  <script src="https://kit.fontawesome.com/2b10e96e92.js" crossorigin="anonymous"></script>
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+  <!-- Custom styles for this template -->
+  <link href="css/shop-homepage.css" rel="stylesheet">
+
+  <script>
+    window.console = window.console || function (t) { };
+  </script>
+
+  <script>
+    if (document.location.search.match(/type=embed/gi)) {
+      window.parent.postMessage("resize", "*");
+    }
+  </script>
+<script src="js/urlParameter.js"></script>
+<script src="js/formatPrice.js"></script>
+<script src="js/sessionHandling.js"></script>
+
+
+</head>
+
+<header>
+  <title>GSSTORE-Shop</title>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-danger fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html"><img src="pics/gsstorelogo.png" size="auto"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item ">
+            <a class="nav-link " href="index.html">HOME
+              <span class="sr-only"></span>
+            </a>
+            </li>
+            <li class="nav-item  ">
+            <a class="nav-link active" href="shop.html">SHOP</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="kader.html">KADER</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="ueberuns.html">ÜBER UNS</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="warenkorb.html"><i class="fas fa-shopping-basket" style="font-size: 20px;"></i></a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="login.html"><i class="fas fa-user" style="font-size: 20px;"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+</header>
+
+<body>
+
+  <link href="https://fonts.googleapis.com/css?family=Lato:300" rel="stylesheet" type="text/css">
+
+  <div class="wrapper">
+
+    <div class="col-1-2">
+      <div class="product-wrap">
+        <h1>Artikelvorschau</h1>
+        <div class="product-shot" id="PP">
+         
+        
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-1-2">
+      <div class="product-info" id="produktdetails">    
+          
+       
+        
+      </div>
+
+    </div>
+  </div>
+  
+  <script
+    src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-157cd5b220a5c80d4ff8e0e70ac069bffd87a61252088146915e8726e5d9f147.js"></script>
+
+
+    <footer class="footer2 py-4 bg-danger">
+      <div class="container">
+        <a href="kontakt.html" style="text-align: left;"  class="footer_element"><b> Kontakt</b></a>
+        <a href="agb.html" style="text-align: center;" class="footer_element"> <b>AGB</b></a>
+        <a href="impressum.html" style="text-align: right;" class="footer_element"> <b>Impressum</b></a>
+      </div>
+    
+    
+    </footer>
+
+
+
+    <script>
+
+      productId = getUrlParameterValue("renderSelectedProductByID");
+      console.log("aktuelle id " + productId);
+     
+      $(document).ready(async function() {
+
+        ziel = "http://localhost:7000/shop/gib/" + productId;
+             
+             const response = await fetch(ziel, {
+                 method: 'GET'
+             });
+             
+             try {
+              if (response.status == 200 || response.status ==201) {
+                 product = await response.json();
+                  console.log(product);
+                  renderSelectedProduct();                               
+                  renderProductPic();
+             }                
+             } catch (error) {
+               console.log(error);
+               
+             }        
+
+
+
+        $('#addToCart').click(function() {
+          var productToAdd = product;
+          console.log("zum warenkorb hinzufügen, product=" + productToAdd.SortID);
+
+          // einen leeren warekorb anlegen
+          var basket = [];
+          // auf die session zugreifen und die warenkorbdaten holen, nur falls warenkorbdaten existieren
+          if(existsSessionItem('basket')) {
+            basket = getJSONSessionItem('basket');
+          }          
+
+          var productFound = false;
+
+          // schauen, ob produkt bereits in einer Bestellposition im Warenkorb
+            // mit einer forschleife den warenkorb ablaufen
+            // in jeder bestellposition schauen, ob da ein Produkt drin ist, wo die SortID mit unserem hinzuzufügenden übereinstimmt
+          // falls gefunden => Menge erhöhen
+          // falls nicht gefunden => Produkt als Bestellposition mit Menge 1 hinzufügen
+          for (i = 0; i < basket.length; i++) {
+            var orderPosition = basket[i];  // aktuelle bestellposition aus array holen
+            
+            // schauen ob produktid übereinstimmt
+            if (orderPosition.product.SortID == productToAdd.SortID) {  // falls ja
+              orderPosition.amount += 1;  // bei bestellposition die menge erhöhen
+              orderPosition.sum = orderPosition.amount * orderPosition.product.Preis; // und den summenpreis neu berechnen
+              basket[i] = orderPosition;  // die Bestellposition im array aktualisieren/überschreiben
+              productFound = true;  // sich merken, wir haben einen treffer gehabt
+              break;  // suche beenden, da treffer gefunden
+            }
+
+          } // ende for
+
+          // falls kein Treffer bei den Warenkorb-Daten, also nicht gefunden
+          if (productFound == false) {
+            // leere bestellposition anlegen
+            var orderPosition = {
+              product: null,
+              amount: 1,
+              sum: 0.0
+            };
+
+            orderPosition.product = productToAdd; // hinzuzufügendes produkt in Bestellposition reinlegen
+            orderPosition.sum = orderPosition.product.Preis * orderPosition.amount; // summenpreis berechnen
+            basket.push(orderPosition); // bestellposition an das warenkorb array anhängen/hinzufügen
+          }
+
+          // veränderten Warenkorb zurück speichern in die session
+          setJSONSessionItem('basket', basket);
+
+       
+
+          console.log(basket);
+        });
+
+      }); // ende document ready
+
+
+      
+
+      function renderSelectedProduct() {
+        
+  
+                 var tmp = '';
+                 tmp += '<h2>' + product.Bezeichnung + '</h2>';
+                 tmp += '<div class="desc">' + product.Beschreibung + '</div><br>';
+                 tmp += '<div class="price_2"><p>' + toEuro(product.Preis) + '</p></div>';
+                 tmp += '<br>'
+                 tmp += '<br>'
+                 tmp += '<a href="#" class="btn btn-lg  btn-danger" id="addToCart" onClick="myFunction1()">In den Warenkorb</a>'
+                 tmp += '<a href="shop.html" class="btn btn-lg btn-light">Weiter einkaufen</a>'
+                 $('#produktdetails').prepend(tmp);
+
+       
+      }
+
+
+      function renderProductPic() {
+ 
+  
+ document.getElementById("PP").innerHTML =
+   
+     `
+     <img id="produktbild" 
+            src="${product.BildPfad}"
+            alt="" />
+     `
+
+}
+
+function myFunction1() {
+  alert("Artikel wurde erfolgreich hinzugefügt");
+
+}
+
+
+    </script>
+
+
+</body>
+
+
+
+
+</html>
