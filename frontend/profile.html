@@ -29,6 +29,7 @@
 
 </head>
 
+<body>
     <header>
         <!-- Navigation -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-danger fixed-top">
@@ -69,47 +70,29 @@
             <span id="message-label"></span>
           </div>
     </header>
-<<<<<<< Updated upstream
     
-=======
-<body>
->>>>>>> Stashed changes
 
 
     <h1 class="text-center  mt-4 mb-0">Profilübersicht</h1>
 
-
+<br>
 
     <div class="container">
         <div class="main-body">
 
 
             <div class="row gutters-sm">
-                
-<<<<<<< Updated upstream
-                <div class="col-md">
-                    <div class="card mb">
-                        <div class="card-body">
-                            <div class="row">
-                                
-                            </div>
-                            <hr><hr>
-                            <h3 style="text-align: center;"><b>Hier können Sie Ihre Daten aktualisieren </b></h3>
-=======
                 <div class="col">
                     <div class="card">
                         <div class="card-body">
-                            
-                            
-                            <h3 style="text-align: center;"><b>Hier können Sie Ihre Daten aktualisieren</b></h3>
->>>>>>> Stashed changes
+                            <h3 style="text-align: center;"><b>Hier können Sie Ihre Daten aktualisieren </b></h3>
                             <hr>
                             <div class="row">
                                 <div class="col-sm-3">
                                     <h6 class="mb-0"><b>Vorname:</b></h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    <input type="text" class="form-control" id="vorname" placeholder="Max">
+                                    <input type="text" class="form-control" id="vorname" placeholder="Vorname">
                                     
                                 </div>
                             </div>
@@ -122,7 +105,7 @@
                                 <div class="col-sm-9 text-secondary">
                                     <br>
     
-                                    <input type="text" class="form-control" id="nachname"   placeholder="Mustermann">
+                                    <input type="text" class="form-control" id="nachname"   placeholder="Nachname">
                                 </div>
                             </div>
 
@@ -133,13 +116,9 @@
                                 </div>
                                 <div class="col-sm-9 text-secondary">
                                     <br>
-                                    <input type="email" class="form-control" id="email" placeholder="Neue Email-Adresse eingeben.">
+                                    <input type="email" class="form-control" id="email" placeholder="Neue E-Mail-Adresse eingeben">
                                     <br>
-<<<<<<< Updated upstream
                                     <button id="updateUserDataButton" class="button btn-danger" onclick="app.profile.updateUserData();"><b>Speichern</b></button>
-=======
-                                    <button class="button bg-danger"><b>Speichern</b></button>
->>>>>>> Stashed changes
                                 </div>
                             </div>
                             <hr>
@@ -187,12 +166,7 @@
                                     <br>
                                     <input type="text" class="form-control" id="ort"   placeholder="Ort">
                                     <br>
-<<<<<<< Updated upstream
                                     <button id="updateUserAdressButton" class="button btn-danger" onclick="app.profile.updateUserAddress();"><b>Speichern</b></button>
-=======
-                                    <button class="button bg-danger"><b>Speichern</b></button>
-
->>>>>>> Stashed changes
                                 </div>
                                
                                
@@ -207,15 +181,12 @@
                                     <select class="form-control" id="paymentOptionList">
                                       </select>
                                       <br>
-<<<<<<< Updated upstream
                                       <button id="updatePaymentButton" class="button btn-danger" onclick="app.profile.updatePaymentOption();"><b>Speichern</b></button>
-=======
-                                      <button class="button bg-danger"><b>Speichern</b></button>
->>>>>>> Stashed changes
                                     
                                 </div>
                             </div>
                             <hr>
+							<hr>
                             <div class="row">
                                 <div class="col-sm-3">
                                     <h6 class="mb-0" style="padding-top: 9px;"><b>Passwort: </b></h6>
@@ -225,12 +196,17 @@
                                     <br>
                                     <input type="password" class="form-control" id="confirmPassword"   placeholder="Neues Passwort bestätigen">
                                       <br>
-<<<<<<< Updated upstream
                                       <button id="updatePasswordButton" class="button btn-danger" onclick="app.profile.updatePassword();"><b>Speichern</b></button>
-=======
-                                      <button class="button bg-danger"><b>Speichern</b></button>
+                                </div>
+                            </div>
+							<hr>
+							<hr>
+							<div class="row">
+                                <div class="col-sm-3">
                                     
->>>>>>> Stashed changes
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                      <button id="logout" class="button btn-danger" onclick="app.profile.logout();"><b>Abmelden</b></button>
                                 </div>
                             </div>
 
@@ -240,17 +216,18 @@
             </div>
         </div>
     </div>
-
-    <footer class="footer py-4 bg-danger">
+	
+	<footer class="footer py-4 bg-danger">
         <div class="container">
           <a href="kontakt.html" style="text-align: left;"  class="footer_element"><b> Kontakt</b></a>
           <a href="agb.html" style="text-align: center;" class="footer_element"> <b>AGB</b></a>
           <a href="impressum.html" style="text-align: right;" class="footer_element"> <b>Impressum</b></a>
         </div>
       </footer>
-
+	
     <script>
         app.profile.initPage();
     </script>
 </body>
+
 </html>
