@@ -52,7 +52,7 @@ const app = {
                 name + '=' + value + ';path=/;expires=' + d.toGMTString();
         },
         deleteCookie: function (name) {
-            setCookie(name, '', -1);
+            app.cookies.setCookie(name, '', -1);
         },
     },
     navigation: {
@@ -282,6 +282,12 @@ const app = {
             $("#ort").val(profile.ort);
             $('#paymentOptionList').val(profile.zahlungsartID).change();        
             $("#profileUser").text(profile.vorname + ' ' + profile.nachname);
-        }
+        },
+        logout: function() {
+            const token = app.cookies.getCookie('jwt');
+            console.log('### remove cookie: ', token);
+            app.cookies.deleteCookie('jwt');
+            window.location.replace("login.html");
+        },
     },        
 };
