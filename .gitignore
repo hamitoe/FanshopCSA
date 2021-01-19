@@ -2,3 +2,4 @@ node_modules
 sortiment.sqlite
 backend/db/sortiment.sqlite
 *.sqlite
+backend/db/sortiment.sqlite

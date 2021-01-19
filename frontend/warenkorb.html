@@ -112,25 +112,7 @@
         </div>
 
       </div>
-      <div class="payment_options">
-        <div class="card border-dark mb-3" style="max-width: 18rem;">
-          <div class="card-header"><b>Bitte Bezahloption wählen</b></div>
-          <div class="card-body text-dark">
-            <p class="card-text"> <input type="radio" id="male" name="paymentoption" value="Paypal">
-              <label for="male"><i class="fab fa-cc-visa" style="font-size: 50px;"></i></label><br>
-              <input type="radio" id="female" name="paymentoption" value="Visa">
-              <label for="female"><i class="fab fa-paypal" style="font-size: 50px;"></i></label><br>
-              <input type="radio" id="other" name="paymentoption" value="Sofort Überweisung" checked>
-              <label for="other"><b>Sofort Überweisung</b></label>
-            </p>
-          </div>
-        </div>
 
-
-
-
-
-      </div>
 
 
       <div class="col mb-2">
@@ -165,10 +147,12 @@
   <script>
 
     var basket = [];
-
+    
+        
     $('document').ready(async function () {
 
       if (existsSessionItem('basket')) {
+        console.log('Loading data from session');
         basket = getJSONSessionItem('basket');
       }
 
@@ -177,11 +161,18 @@
     });
 
     function showBasket() {
+      console.log('showing basket data');
       console.log(basket);
+      console.log(basket.length);
 
+      // element leeren
+      $('#renderShoppingCart').html('');
+
+      // ausgeben
       if (basket.length == 0) {
         $('#renderShoppingCart').html("Der Warenkorb ist leer");
       } else {
+        console.log('Warenkorb wird ausgegeben');
 
         var totalSum = 0;
 
@@ -204,11 +195,12 @@
 
           totalSum += basketItem.sum;
 
-        }
+        } // end for
 
         var totalTax = (totalSum / 119) * 19;
 
         totalTax = totalTax.toFixed(2);
+        totalSum = totalSum.toFixed(2);
 
         
 
@@ -217,29 +209,8 @@
 
         tmp = '<tr><td colspan="3"></td><td>Bestellwert</td><td class="text-right">' + toEuro(totalSum) + '</td><td></td></tr>';
         $('#renderShoppingCart').append(tmp);
-        /*
-       document.getElementById("renderShoppingCart").innerHTML =
-           ` 
-       ${basket.map(function (basketItem) {
-         console.log(basketItem);
-               return `
-        
-  
-               <tr>
-               <td><img class="shopping-cart-pic-size" src="${basketItem.product.BildPfad}"  /> </td>
-               <td>${basketItem.product.Beschreibung}</td>
-               <td class="text-right">${toEuro(basketItem.product.Preis)}</td>
-               <td><input class="form-control" type="text" value="${basketItem.amount}" /></td>
-               <td class="text-right">${toEuro(basketItem.sum)}</td>
-               <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
-               </tr>
-    
-              
-           `
-           }).join("")}
-      
-       `*/
-      }
+       
+      } // end if basket empty
 
     }
 
@@ -247,28 +218,30 @@
     function removeItemFromBasket(idToBeRemoved) {
       console.log("bestellposition entfernen, produkt id=" + idToBeRemoved);
 
+      // kopiere alle nicht zu löschenden bestellpositionen in ein neues array
+      // nur falls mehr wie ein element im array. und aktualisier die session.
+      // ansonsten wird einfach leeres array genommenund das sessionitem gelöscht
+      if (basket.length > 1) {
+      
+        var newBasket = [];
+        for (i = 0; i < basket.length; i++) {
+          if (basket[i].product.SortID != idToBeRemoved) 
+            newBasket.push(basket[i]);
+        }
+        setJSONSessionItem('basket', newBasket);
+        basket = newBasket;
 
-      index = basket.map(function (item) {
-        return item.product.SortID
-        console.log("Das ist item.SortID " + item.product.SortID)
+      } else {
+        basket = [];
+        removeSessionItem('basket');
+      }      
 
-
-      }).indexOf(idToBeRemoved);
-
-      basket.splice(index, 1);
-
-      setJSONSessionItem('basket', basket);
-      // veränderten Warenkorb zurück speichern in die session
-      window.location.reload();
+      // ansicht aktualisieren
+      showBasket();
 
 
     }
 
-
-      // TODO      
-      // suchen nach der bestellposition, welche das produkt enthält, welche die id hat (erledigt)
-      // gefundene bestellposition löschen (nicht pop, sondern splice)
-      // warenkorb in session aktualisieren
 
 
 
