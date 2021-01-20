@@ -66,6 +66,15 @@ const app = {
         },
     },
     profile: {
+
+        logout: function() {
+            const token = app.cookies.getCookie('jwt');
+            console.log('### remove cookie: ', token);
+            app.cookies.deleteCookie('jwt')
+            window.location.replace("login.html");
+        },
+
+
         loadProfileData: async function () {
             const response = await fetch('http://localhost:7000/profile', {
                 method: 'GET',
@@ -297,12 +306,6 @@ const app = {
     },
     
 
-        },
-        logout: function() {
-            const token = app.cookies.getCookie('jwt');
-            console.log('### remove cookie: ', token);
-            app.cookies.deleteCookie('jwt');
-            window.location.replace("login.html");
-        },
-    },        
-};
+    
+    };    
+
