@@ -283,5 +283,18 @@ const app = {
             $('#paymentOptionList').val(profile.zahlungsartID).change();        
             $("#profileUser").text(profile.vorname + ' ' + profile.nachname);
         }
-    },        
+    }, 
+
+    navigation2: {
+        forwardToShop: function () {
+            const cookie = app.cookies.getCookie('jwt');
+            if (cookie != undefined && cookie != null) {
+                window.location.replace('shop.html');
+            } else {
+                window.location.replace('error.html');
+            }
+        },
+    },
+    
+
 };

@@ -25,6 +25,7 @@
   <script src="js/urlParameter.js"></script>
   <script src="js/formatPrice.js"></script>
   <script src="https://unpkg.com/easyinvoice/dist/easyinvoice.min.js"></script>
+  <script src="js/app.js"></script>
   
 </head>
 
@@ -46,7 +47,7 @@
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="shop.html">SHOP</a>
+           <button onclick="app.navigation2.forwardToShop()"><a class="nav-link">SHOP</a></button> 
           </li>
           <li class="nav-item">
             <a class="nav-link" href="kader.html">KADER</a>
@@ -59,7 +60,7 @@
                 style="font-size: 20px;"></i></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="login.html"><i class="fas fa-user" style="font-size: 20px;"></i></a>
+           <button> <a class="nav-link" onclick="app.navigation.forwardToLoginOrProfile()"><i class="fas fa-user" style="font-size: 20px;"></i></a></button>
           </li>
         </ul>
       </div>
